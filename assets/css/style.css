@@ -1,17 +1,18 @@
 body {
     min-height: calc(100vh - 70px);
-    background: url("../images/swanson-4.jpg") no-repeat center center fixed; 
+    background: url("../images/cool_background-1.jpg") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     color: white;
-   }
+    }
  
 div {
     height: 50px;
     background-color: blue;
-}
+    border: 1px solid black;
+  }
 
 h1 {
     font-size: 65px;
