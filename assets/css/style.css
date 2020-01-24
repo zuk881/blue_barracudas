@@ -10,12 +10,35 @@ body {
  
 
 #lead {
-    font-size: 100px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 140px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial;
     padding: 12px;
     margin: auto;
-    color: white;
+    background: linear-gradient(to bottom, #cfc09f 22%,#634f2c 24%, #cfc09f 26%, #cfc09f 27%,#ffecb3 40%,#3a2c0f 78%); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+	text-transform: uppercase;	
+	margin: 0;
+	font-weight: 400;
 }
+
+h1:after {
+    background: none;
+    content: attr(data-heading);
+    left: 0;
+	top: 0;
+    z-index: -1;
+    position: absolute;
+    text-shadow: 
+		-1px 0 1px #c6bb9f, 
+		0 1px 1px #c6bb9f, 
+		5px 5px 10px rgba(0, 0, 0, 0.4),
+		-5px -5px 10px rgba(0, 0, 0, 0.4);
+}
+
 
 .table-1 {
     border-radius: 12px;
@@ -26,6 +49,15 @@ body {
 }
 
 .table-2 {
+    margin-top: 25px;
+    border-radius: 12px;
+    padding:0px 0px 0px 0px;
+    padding: 15px;
+    color: white;
+    background-color: lightgray;
+}
+
+.table-3 {
     margin-top: 25px;
     border-radius: 12px;
     padding:0px 0px 0px 0px;
@@ -82,4 +114,17 @@ label {
     border-radius: 5px;
     padding: 5px;
     color: gray;
+}
+
+#job-1 {
+    font-weight: bolder;
+    padding: 5px;
+}
+
+#h1 {
+    font-weight: bolder;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    padding: 5px; 
+    color: white;
 }
