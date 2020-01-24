@@ -62,11 +62,11 @@ $(document).ready(function(){
 
 
 
-    
+
     //writing ajax functionality for the github jobs api
-    var description = "javascript"
+    var keyword = "javascript"
     var location = "phoenix"
-    var queryURL = "https://jobs.github.com/positions.json?description="+description+"&location="+location
+    var queryURL = "https://jobs.github.com/positions.json?description="+keyword+"&location="+location
 
     $.ajax ({
         url: queryURL,
