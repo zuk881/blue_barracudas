@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -14,25 +12,35 @@
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <title>Job Search</title>
+    <title>Job Search</title>
 </head>
 
 <body>
-    <h1 class="center-align" id="lead">Let's Get Paid</h1>
-
-    <div class="container center-align">
-        <a class="waves-effect waves-light btn">Search</a>
-        <!-- Page Content goes here -->
-        <div class="row">
-            <div id="1" class="col s12">This div is 12-columns wide on all screen sizes</div>
-            <div id="2" class="col s6">6-columns (one-half)</div>
-            <div id="3" class="col s6">6-columns (one-half)</div>
-            <div id="4" class="col s6">6-columns (one-half)</div>
-            <div id="5" class="col s6">6-columns (one-half)</div>
-            <div id="6" class="col s6">6-columns (one-half)</div>
-            <div id="7" class="col s6">6-columns (one-half)</div>
+    <h1 class="text-center" id="lead">Let's Get Paid</h1>
+    <div class="container table-1">
+        <div class="form-group">
+            <label for="keyword">Search Keyword</label>
+            <input onfocus="this.value=''" type="text" class="form-control train-time" placeholder="search keyword">
+        </div>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input onfocus="this.value=''" type="text" name="location" class="form-control" id="location"
+                placeholder="location">
+        </div>
+        <div class="form-group">
+            <button id="submit" type="submit" class="btn btn-primary" id="search">Submit</button>
         </div>
     </div>
+
+    <div class="container table-2">
+        <div class="row text-center" id="results">
+            <div id="results-title" class="col-sm-3">Job Title</div>
+            <div id="results-employer" class="col-sm-3">Employer</div>
+            <div id="results-location" class="col-sm-3">Location</div>
+            <div id="results-description" class="col-sm-3">Description</div>
+        </div>
+    </div>
+
     <script src="assets/javascript/app.js"></script>
 </body>
 <footer>

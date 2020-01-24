@@ -8,26 +8,31 @@ body {
     color: white;
     }
  
-div {
-    height: 50px;
-    background-color: blue;
-    border: 1px solid black;
-  }
 
-h1 {
-    font-size: 65px;
+#lead {
+    font-size: 100px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 12px;
     margin: auto;
+    color: white;
 }
 
+.table-1 {
+    border-radius: 12px;
+    padding:0px 0px 0px 0px;
+    padding: 15px;
+    color: white;
+    background-color: lightgray;
+}
 
-
-
-
-
-
-
-
+.table-2 {
+    margin-top: 25px;
+    border-radius: 12px;
+    padding:0px 0px 0px 0px;
+    padding: 15px;
+    color: white;
+    background-color: lightgray;
+}
 
 footer {
     background: #666666;
@@ -43,3 +48,38 @@ footer {
     bottom: 0px;
     height: 50px;   
 }  
+
+label {
+    font-weight: bolder;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#results-title {
+    font-weight: bolder;
+    border-radius: 5px;
+    padding: 5px;
+    color: gray;
+}
+
+#results-employer {
+    font-weight: bolder;
+    border-radius: 5px;
+    padding: 5px;
+    color: gray;
+}
+
+#results-location {
+    font-weight: bolder;
+    border-radius: 5px;
+    padding: 5px;
+    color: gray;
+}
+
+#results-description {
+    font-weight: bolder;
+    border-radius: 5px;
+    padding: 5px;
+    color: gray;
+}
