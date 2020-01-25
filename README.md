@@ -11,7 +11,7 @@ Keyword input: id=keyword
 Location input: id=location
 
 
-Search button: id=search
+Search button: id=submit
 
 
 Results div:  
