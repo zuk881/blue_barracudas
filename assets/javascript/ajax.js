@@ -28,7 +28,26 @@ $(document).ready(function () {
             console.log(response);
 
 
-//USA Jobs Dispay code goes here:
+            // displays results from the USAJobs board to the page
+            var results = response.SearchResult.SearchResultItems;
+
+            // create a new div for each job result in the array with a unique id corresponding with the index of the item
+            results.map(function (value, key) {
+                // create new table row
+                var newResult = $("<tr>");
+                newResult.addClass("search-result");
+                newResult.attr("id", "result-" + key);
+                // add table data
+                var newJobTitle = $("<td>").text(value.MatchedObjectDescriptor.PositionTitle);
+                var newEmployer = $("<td>").text(value.MatchedObjectDescriptor.OrganizationName);
+                var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
+                var newJobDescription = $("<td>").text(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
+                // append table data to new row
+                newResult.append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
+                // append new row to table body
+                $(".job-info-1").append(newResult);
+
+            });
 
 
 
@@ -39,28 +58,9 @@ $(document).ready(function () {
 
 
 
+            
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// RACHEL - THIS LINE GOES ON 63
+            // RACHEL - THIS LINE GOES ON 63
 
         })
 
@@ -78,6 +78,7 @@ $(document).ready(function () {
         }).then(function (response) {
             var resultsArr = response
             console.log(resultsArr);
+
 
 //GitHub Jobs Code
     // create a new div for each job result in the array with a unique id corresponding with the index of the item
@@ -97,6 +98,7 @@ $(document).ready(function () {
       $(".job-info-2").append(newResult);
     // });
 
+            //GitHub Jobs Code
 
 
 
@@ -120,7 +122,24 @@ $(document).ready(function () {
 
 
 
-//PHIL - THIS LINE GOES ON 122
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //PHIL - THIS LINE GOES ON 122
         })
 
         // //ajax for indeed api
