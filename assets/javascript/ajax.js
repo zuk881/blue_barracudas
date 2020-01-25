@@ -76,25 +76,26 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            var results = response
-            console.log(results);
+            var resultsArr = response
+            console.log(resultsArr);
 
 //GitHub Jobs Code
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // create a new div for each job result in the array with a unique id corresponding with the index of the item
+    resultsArr.map(function(value,key) {
+      // create new table row
+      var newResult = $("<tr>");
+      newResult.addClass("search-result");
+      newResult.attr("id","result-" + key);
+      // add table data
+      var newJobTitle = $("<td>").text(value.title);
+      var newEmployer = $("<td>").text(value.company);
+      var newJobLocation = $("<td>").text(value.location);
+      var newJobDescription = $("<td>").text(value.description);
+      // append table data to new row
+      newResult.append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
+      // append new row to table body
+      $(".job-info-2").append(newResult);
+    // });
 
 
 
@@ -153,6 +154,12 @@ $(document).ready(function () {
         //     var results = response
         //     console.log(results)
         // })
+        
+
+        //Empties the input boxes after the submit button is clicked
+        $("#keyword").val(" ")
+        $("#location").val(" ")
+
     });
 
 
@@ -162,4 +169,4 @@ $(document).ready(function () {
 
 
 
-
+})
