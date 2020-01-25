@@ -66,6 +66,15 @@ h1:after {
     background-color: lightgray;
 }
 
+.table-4 {
+    margin-top: 25px;
+    border-radius: 12px;
+    padding:0px 0px 0px 0px;
+    padding: 15px;
+    color: white;
+    background-color: lightgray;
+}
+
 footer {
     background: #666666;
     color: #fff;
