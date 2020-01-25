@@ -5,10 +5,10 @@
 ## List of Classes and Ids
 
 
-Keyword input: id=keyword
+Keyword input: id=user-keyword
 
 
-Location input: id=location
+Location input: id=user-location
 
 
 Search button: id=submit
