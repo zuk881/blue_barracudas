@@ -16,6 +16,10 @@ Search button: id=submit
 
 Results div:  
 
+USAJobs: class=job-info-1
+GibHub Jobs: class=job-info-2
+
+
 id=results-title
 
 
