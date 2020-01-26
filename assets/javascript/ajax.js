@@ -38,10 +38,17 @@ $(document).ready(function () {
                 newResult.addClass("search-result");
                 newResult.attr("id", "result-" + key);
                 // add table data
-                var newJobTitle = $("<td>").text(value.MatchedObjectDescriptor.PositionTitle);
+                // console.log(value);
+                var newJobTitle = $("<td>").html("<a href='"+ value.MatchedObjectDescriptor.ApplyURI[0] + "' target='_blank'>" +value.MatchedObjectDescriptor.PositionTitle + "</a>")
+
+                
                 var newEmployer = $("<td>").text(value.MatchedObjectDescriptor.OrganizationName);
                 var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
-                var newJobDescription = $("<td>").addClass("overflow-auto").text(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a href='#'data-toggle='modal' data-target='#exampleModalScrollable'> see more </a>");
+                $(".modal-body").val(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
+                $('#exampleModalScrollable .modal-body').html() ;
+                //open the modal
+                // $('#exampleModalScrollable').modal('show') 
                 // append table data to new row
                 newResult.append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
                 // append new row to table body
@@ -49,18 +56,6 @@ $(document).ready(function () {
 
             });
 
-
-
-
-
-
-
-
-
-
-            
-
-            // RACHEL - THIS LINE GOES ON 63
 
         })
 
@@ -98,49 +93,21 @@ $(document).ready(function () {
       $(".job-info-2").append(newResult);
     // });
 
-            //GitHub Jobs Code
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //PHIL - THIS LINE GOES ON 122
         })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // //ajax for indeed api
         // var keywordIndeed = $("#keyword").val()
