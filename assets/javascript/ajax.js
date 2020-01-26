@@ -76,7 +76,7 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            var resultsArr = response
+            var resultsArr = response;
             console.log(resultsArr);
 
 
