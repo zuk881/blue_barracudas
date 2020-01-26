@@ -41,7 +41,7 @@ $(document).ready(function () {
                 var newJobTitle = $("<td>").text(value.MatchedObjectDescriptor.PositionTitle);
                 var newEmployer = $("<td>").text(value.MatchedObjectDescriptor.OrganizationName);
                 var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
-                var newJobDescription = $("<td>").text(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
+                var newJobDescription = $("<td>").addClass("overflow-auto").text(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
                 // append table data to new row
                 newResult.append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
                 // append new row to table body
@@ -91,7 +91,7 @@ $(document).ready(function () {
       var newJobTitle = $("<td>").text(value.title);
       var newEmployer = $("<td>").text(value.company);
       var newJobLocation = $("<td>").text(value.location);
-      var newJobDescription = $("<td>").text(value.description);
+      var newJobDescription = $("<td>").addClass("overflow-auto").html(value.description);
       // append table data to new row
       newResult.append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
       // append new row to table body
