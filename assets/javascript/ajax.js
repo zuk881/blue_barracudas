@@ -87,7 +87,7 @@ $(document).ready(function () {
       var newJobTitle = $("<td>").text(value.title);
       var newEmployer = $("<td>").text(value.company);
       var newJobLocation = $("<td>").text(value.location);
-      var newJobDescription = $("<td>").addClass("overflow-auto").html(value.description);
+      var newJobDescription = $("<td>").addClass("overflow-auto").html(value.description.substring(0, 250) + "...<a href='#'data-toggle='modal' data-target='#exampleModalScrollable'> see more </a>");
       // append table data to new row
       newResult.append(newSaveButton).append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
       // append new row to table body
