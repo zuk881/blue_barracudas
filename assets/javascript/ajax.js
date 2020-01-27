@@ -83,7 +83,7 @@ $(document).ready(function () {
       newResult.addClass("search-result");
       newResult.attr("id","result-" + key);
       // add table data
-      var newSaveButton = $("<td>").html("<button class='save-button'>Save</button>")
+      var newSaveButton = $("<td>").html("<button type='button' class='btn btn-primary btn-sm save-button'>Save</button>")
       var newJobTitle = $("<td>").text(value.title);
       var newEmployer = $("<td>").text(value.company);
       var newJobLocation = $("<td>").text(value.location);
@@ -151,8 +151,19 @@ $(document).ready(function () {
 
 
 });
+//initialize the firebase database where we can save user saved jobs
 
 
+//write the functionality of the save buttons
+//_______________________________________________
+//document click function that will allow the user to click
+//on the dynamically generated save buttons from the api calls that display in the save
+//column of the table rows
+//when the user clicks the save button
+
+//the object will be pushed to firebase on that signed in users path
+
+//the saved jobs will then be pulled from firebase to be displayed on the favorites html page
 
 
 
