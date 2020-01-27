@@ -120,3 +120,17 @@ td {
 td:hover {
     overflow: visible;
   }
+
+.favorite {
+    font-size: 60px;
+    color: red;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}  
+
+.applied {
+    font-size: 60px;
+    color: yellow;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
