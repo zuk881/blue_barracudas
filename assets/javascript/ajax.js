@@ -207,8 +207,8 @@ $(document).ready(function () {
     database.ref().on("child_added", function (snapshot) {
         console.log(snapshot.val());
         //and store them in new variables
-        var eraseButton = $("<button>").text("erase")
-        var appliedButton = $("<button>").text("i've applied")
+        var eraseButton = $("<button>").text("erase").addClass("btn btn-primary btn-sm erase-button")
+        var appliedButton = $("<button>").text("i've applied").addClass("btn btn-primary btn-sm applied-button")
         var savedTitle = snapshot.val().title
         var savedLoc = snapshot.val().location
         var savedCompany = snapshot.val().company
@@ -223,8 +223,19 @@ $(document).ready(function () {
             $("<td>").text(savedURL)
         )
         $(".job-info-saved").append(newRow);
-
+            database.ref().remove({
+                
+            })
     })
 
 
+
+
+    //give functionality to the new buttons in the saved jobs table
+    //the erase button will remove the saved job from firebase and from the table at the same time
+$(document).on("click", ".erase-button", function(){
+    console.log("erase")
+})
+
+    //the applied for button will move the job to the other table for applied for jobs
 })
