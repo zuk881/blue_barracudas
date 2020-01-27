@@ -152,7 +152,16 @@ $(document).ready(function () {
 
 });
 
+//write the functionality of the save buttons
+//_______________________________________________
+//document click function that will allow the user to click
+//on the dynamically generated save buttons from the api calls that display in the save
+//column of the table rows
+//when the user clicks the save button
 
+//the object will be pushed to firebase on that signed in users path
+
+//
 
 
 
