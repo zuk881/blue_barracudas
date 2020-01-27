@@ -98,34 +98,6 @@ label {
     padding: 5px;
 }
 
-#results-title {
-    font-weight: bolder;
-    border-radius: 5px;
-    padding: 5px;
-    color: gray;
-}
-
-#results-employer {
-    font-weight: bolder;
-    border-radius: 5px;
-    padding: 5px;
-    color: gray;
-}
-
-#results-location {
-    font-weight: bolder;
-    border-radius: 5px;
-    padding: 5px;
-    color: gray;
-}
-
-#results-description {
-    font-weight: bolder;
-    border-radius: 5px;
-    padding: 5px;
-    color: gray;
-}
-
 #job-1 {
     font-weight: bolder;
     padding: 5px;
