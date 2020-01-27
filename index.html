@@ -16,21 +16,30 @@
 <body>
     <h1 class="text-center" id="lead">Let's Get Paid</h1>
     <div class="container table-1">
-        <div class="form-group">
-            <label for="keyword">Search Keyword</label>
-            <input onfocus="this.value=''" type="text" class="form-control" placeholder="search keyword"
-                id="keyword">
-        </div>
-        <div class="form-group">
-            <label for="location">Location</label>
-            <input onfocus="this.value=''" type="text" name="location" class="form-control" id="location"
-                placeholder="location">
-        </div>
-        <div class="form-group">
-            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+        <div class="row">
+            <div class="col-sm">
+                <div class="form-group">
+                    <label for="keyword">Search Keyword</label>
+                    <input onfocus="this.value=''" type="text" class="form-control" placeholder="search keyword"
+                        id="keyword">
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input onfocus="this.value=''" type="text" name="location" class="form-control" id="location"
+                        placeholder="location">
+                </div>
+                <div class="form-group">
+                    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+            <div class="col-sm">
+                <nav class="nav">
+                    <a class="nav-link" href="index.html"><h2>Search Page</h2></a>
+                    <a class="nav-link" href="favorites.html"><h2>Favorites Page</h2></a>
+                </nav>
+            </div>
         </div>
     </div>
-
     <div class="container table-1">
         <table class="table table-hover">
             <thead>
@@ -142,7 +151,7 @@
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
     <script src="assets/javascript/app.js"></script>
     <script src="assets/javascript/ajax.js"></script>
-   
+
     <footer>
         &#169; Copyright Blue Barracudas
     </footer>

@@ -76,6 +76,15 @@ h1:after {
     background-color: lightgray;
 }
 
+.table-5 {
+    margin-top: 25px;
+    border-radius: 12px;
+    padding:0px 0px 0px 0px;
+    padding: 15px;
+    color: white;
+    background-color: lightgray;
+}
+
 footer {
     background: #666666;
     color: #fff;
@@ -133,4 +142,14 @@ td:hover {
     color: yellow;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+h2 {
+    color: white;
+}
+
+.nav-link {
+background-color: cornflowerblue;
+border-radius: 10px;
+margin: 5px;
 }
