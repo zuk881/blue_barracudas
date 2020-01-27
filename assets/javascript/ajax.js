@@ -89,7 +89,7 @@ $(document).ready(function () {
                 //add the text to the button
                 saveButton.text("Save")
                 //add bootstrap classes to this button and a save-button class for click functionality
-                saveButton.addClass("btn btn-primary btn-sm save-button")
+                saveButton.addClass("btn-floating btn-large waves-effect waves-light blue save-button")
                 //here I add the attributes for the values that I will need to push to the database in the click function
                 saveButton.attr("data-url", value.url)
                 saveButton.attr("data-title", value.title)
@@ -193,14 +193,22 @@ $(document).ready(function () {
         //the object will be pushed to firebase on that signed in users path
         e.preventDefault();
         console.log("save")
-        //these are the attributes that were created when the button was made.
-        database.ref().push({
+        var savedJob = {
             title: $(this).attr("data-title"),
             location: $(this).attr("data-loc"),
             company: $(this).attr("data-company"),
             url: $(this).attr("data-url"),
-            savebutton: $(this)
-        })
+            // savebutton: $(this)
+
+        }
+        //these are the attributes that were created when the button was made.
+        database.ref().push(savedJob
+            // title: $(this).attr("data-title"),
+            // location: $(this).attr("data-loc"),
+            // company: $(this).attr("data-company"),
+            // url: $(this).attr("data-url"),
+            // savebutton: $(this)
+        )
     })
     //the saved jobs will then be pulled from firebase to be displayed on the favorites html page
     //use the child added function to take the values from the db
@@ -237,8 +245,8 @@ $(document).ready(function () {
     //the erase button will remove the saved job from firebase and from the table at the same time
 $(document).on("click", ".erase-button", function(){
     console.log("erase")
-    var adaRef = firebase.database().ref();
-adaRef.remove()
+    var removeRef = firebase.database().ref();
+removeRef.remove()
   .then(function() {
     console.log("Remove succeeded.")
   })
