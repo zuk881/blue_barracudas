@@ -83,7 +83,7 @@ $(document).ready(function () {
       newResult.addClass("search-result");
       newResult.attr("id","result-" + key);
       // add table data
-      var newSaveButton = $("<td>").html("<button class='save-button'>Save</button>")
+      var newSaveButton = $("<td>").html("<button type='button' class='btn btn-primary btn-sm save-button'>Save</button>")
       var newJobTitle = $("<td>").text(value.title);
       var newEmployer = $("<td>").text(value.company);
       var newJobLocation = $("<td>").text(value.location);
