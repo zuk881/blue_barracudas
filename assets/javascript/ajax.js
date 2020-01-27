@@ -129,7 +129,7 @@ $(document).ready(function () {
         // });
 
 
-        //writing ajax for upwork api
+        //writing ajax for reed api
         // var keywordReed = "web"
         // var locationReed = "london"
         // var queryURLreed = "https://www.reed.co.uk/api/search?keywords="+keywordReed+"&locationName="+locationReed
@@ -152,17 +152,32 @@ $(document).ready(function () {
 
 });
 //initialize the firebase database where we can save user saved jobs
-
+var firebaseConfig = {
+    apiKey: "AIzaSyDLgO9rlM5PW8AhrIWk31hdSwHxaEHbyhA",
+    authDomain: "blue-barracuda.firebaseapp.com",
+    databaseURL: "https://blue-barracuda.firebaseio.com",
+    projectId: "blue-barracuda",
+    storageBucket: "blue-barracuda.appspot.com",
+    messagingSenderId: "436435380595",
+    appId: "1:436435380595:web:9989d968eb18cc60cd7d06"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
 
 //write the functionality of the save buttons
 //_______________________________________________
 //document click function that will allow the user to click
+
 //on the dynamically generated save buttons from the api calls that display in the save
 //column of the table rows
 //when the user clicks the save button
-
+$(document).on("click", ".save-button", function(e){         
 //the object will be pushed to firebase on that signed in users path
+e.preventDefault();
+console.log("save")
 
+})
 //the saved jobs will then be pulled from firebase to be displayed on the favorites html page
 
 
