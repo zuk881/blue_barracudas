@@ -151,6 +151,8 @@ $(document).ready(function () {
 
 
 });
+//initialize the firebase database where we can save user saved jobs
+
 
 //write the functionality of the save buttons
 //_______________________________________________
@@ -161,7 +163,7 @@ $(document).ready(function () {
 
 //the object will be pushed to firebase on that signed in users path
 
-//
+//the saved jobs will then be pulled from firebase to be displayed on the favorites html page
 
 
 
