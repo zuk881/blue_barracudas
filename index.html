@@ -16,19 +16,21 @@
 <body>
     <h1 class="text-center" id="lead">Let's Get Paid</h1>
     <div class="container table-1">
-        <div class="form-group">
-            <label for="keyword">Search Keyword</label>
-            <input onfocus="this.value=''" type="text" class="form-control" placeholder="search keyword"
-                id="keyword">
-        </div>
-        <div class="form-group">
-            <label for="location">Location</label>
-            <input onfocus="this.value=''" type="text" name="location" class="form-control" id="location"
-                placeholder="location">
-        </div>
-        <div class="form-group">
-            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
-        </div>
+        <form>
+            <div class="form-group">
+                <label for="keyword">Search Keyword</label>
+                <input onfocus="this.value=''" type="text" class="form-control train-time" placeholder="search keyword"
+                    id="keyword">
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input onfocus="this.value=''" type="text" name="location" class="form-control" id="location"
+                    placeholder="location">
+            </div>
+            <div class="form-group">
+                <input id="submit" type="submit" class="btn btn-primary" value="Search">
+            </div>
+        </form>
     </div>
 
     <div class="container table-1">
@@ -46,6 +48,7 @@
                 </tr>
             </thead>
             <tbody class="job-info-1">
+            <!-- Results from USAJobs will appear here -->
             </tbody>
         </table>
     </div>
@@ -65,6 +68,7 @@
                 </tr>
             </thead>
             <tbody class="job-info-2">
+            <!-- Results from Github jobs will appear here -->
             </tbody>
         </table>
     </div>
@@ -84,6 +88,7 @@
                 </tr>
             </thead>
             <tbody class="job-info-3">
+            <!-- Not sure which results will appear here -->
             </tbody>
         </table>
     </div>
@@ -103,6 +108,7 @@
                 </tr>
             </thead>
             <tbody class="job-info-4">
+            <!-- Not sure which results will appear here -->
             </tbody>
         </table>
     </div><br><br><br>
