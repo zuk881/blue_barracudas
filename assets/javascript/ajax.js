@@ -83,12 +83,13 @@ $(document).ready(function () {
       newResult.addClass("search-result");
       newResult.attr("id","result-" + key);
       // add table data
+      var newSaveButton = $("<td>").html("<button class='save-button'>Save</button>")
       var newJobTitle = $("<td>").text(value.title);
       var newEmployer = $("<td>").text(value.company);
       var newJobLocation = $("<td>").text(value.location);
       var newJobDescription = $("<td>").addClass("overflow-auto").html(value.description);
       // append table data to new row
-      newResult.append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
+      newResult.append(newSaveButton).append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
       // append new row to table body
       $(".job-info-2").append(newResult);
     // });
