@@ -207,8 +207,8 @@ $(document).ready(function () {
     database.ref().on("child_added", function (snapshot) {
         console.log(snapshot.val());
         //and store them in new variables
-        var eraseButton = $("<button>").text("erase")
-        var appliedButton = $("<button>").text("i've applied")
+        var eraseButton = $("<button>").text("erase").addClass("btn btn-primary btn-sm erase-button")
+        var appliedButton = $("<button>").text("i've applied").addClass("btn btn-primary btn-sm applied-button")
         var savedTitle = snapshot.val().title
         var savedLoc = snapshot.val().location
         var savedCompany = snapshot.val().company
