@@ -3,7 +3,9 @@ $(document).ready(function () {
 
 
     // function to display results after submit button is pressed
-    $("#submit").on("click", function () {
+    $("#submit").on("click", function (e) {
+        e.preventDefault();
+
         console.log("submit button working")
 
         // ajax call for USA Jobs
