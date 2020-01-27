@@ -85,7 +85,15 @@ $(document).ready(function () {
                 newResult.addClass("search-result");
                 newResult.attr("id", "result-" + key);
                 // add table data
-                var newSaveButton = $("<td>").html("<button type='button' class='btn btn-primary btn-sm save-button' data-title>Save</button>")
+                var saveButton = $("<button>");
+                saveButton.text("Save")
+                saveButton.addClass("btn btn-primary btn-sm save-button")
+                saveButton.attr("data-url", value.url)
+                saveButton.attr("data-title", value.title)
+                saveButton.attr("data-company", value.company)
+                saveButton.attr("data-loc", value.location)
+                var newSaveButton = $("<td>")
+                newSaveButton.append(saveButton)
                 var newJobTitle = $("<td>").html("<a href='" + value.url + "' target='_blank'>" + value.title + "</a>");
                 var newEmployer = $("<td>").text(value.company);
                 var newJobLocation = $("<td>").text(value.location);
@@ -178,8 +186,13 @@ $(document).ready(function () {
         //the object will be pushed to firebase on that signed in users path
         e.preventDefault();
         console.log("save")
-        console.log($(this))
+        console.log($(this).attr("data-url"))
+
         database.ref().push({
+            title: $(this).attr("data-title"),
+            location: $(this).attr("data-loc"),
+            company: $(this).attr("data-company"),
+            url: $(this).attr("data-url")
 
         })
     })
