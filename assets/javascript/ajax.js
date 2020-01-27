@@ -84,23 +84,29 @@ $(document).ready(function () {
                 var newResult = $("<tr>");
                 newResult.addClass("search-result");
                 newResult.attr("id", "result-" + key);
-                // add table data
+                // here i make a var called save button and create an html button using jquery
                 var saveButton = $("<button>");
+                //add the text to the button
                 saveButton.text("Save")
+                //add bootstrap classes to this button and a save-button class for click functionality
                 saveButton.addClass("btn btn-primary btn-sm save-button")
+                //here I add the attributes for the values that I will need to push to the database in the click function
                 saveButton.attr("data-url", value.url)
                 saveButton.attr("data-title", value.title)
                 saveButton.attr("data-company", value.company)
                 saveButton.attr("data-loc", value.location)
+                //now I make another var newsavebutton which creates the data cell 
                 var newSaveButton = $("<td>")
+                //that I append the actual button to
                 newSaveButton.append(saveButton)
+                //these are the variables that we create to hold the values that the ajax query returns to us
                 var newJobTitle = $("<td>").html("<a href='" + value.url + "' target='_blank'>" + value.title + "</a>");
                 var newEmployer = $("<td>").text(value.company);
                 var newJobLocation = $("<td>").text(value.location);
                 var newJobDescription = $("<td>").addClass("overflow-auto").html(value.description.substring(0, 250) + "...<a href='#'data-toggle='modal' data-target='#exampleModalScrollable'> see more </a>");
                 // append table data to new row
                 newResult.append(newSaveButton).append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
-                // append new row to table body
+                // append new row to the appropriate table body
                 $(".job-info-2").append(newResult);
                 // });
 
@@ -187,7 +193,7 @@ $(document).ready(function () {
         e.preventDefault();
         console.log("save")
         console.log($(this).attr("data-url"))
-
+        //these are the attributes that were created when the button was made.
         database.ref().push({
             title: $(this).attr("data-title"),
             location: $(this).attr("data-loc"),
@@ -197,7 +203,28 @@ $(document).ready(function () {
         })
     })
     //the saved jobs will then be pulled from firebase to be displayed on the favorites html page
+    //use the child added function to take the values from the db
+    database.ref().on("child_added", function (snapshot) {
+        console.log(snapshot.val());
+        //and store them in new variables
+        var eraseButton = $("<button>").text("erase")
+        var appliedButton = $("<button>").text("i've applied")
+        var savedTitle = snapshot.val().title
+        var savedLoc = snapshot.val().location
+        var savedCompany = snapshot.val().company
+        var savedURL = snapshot.val().url
 
+        var newRow = $("<tr>").append(
+            $("<td>").html(eraseButton),
+            $("<td>").html(appliedButton),
+            $("<td>").text(savedTitle),
+            $("<td>").text(savedLoc),
+            $("<td>").text(savedCompany),
+            $("<td>").text(savedURL)
+        )
+        $(".job-info-saved").append(newRow);
+
+    })
 
 
 })
