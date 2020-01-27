@@ -223,8 +223,19 @@ $(document).ready(function () {
             $("<td>").text(savedURL)
         )
         $(".job-info-saved").append(newRow);
-
+            database.ref().remove({
+                
+            })
     })
 
 
+
+
+    //give functionality to the new buttons in the saved jobs table
+    //the erase button will remove the saved job from firebase and from the table at the same time
+$(document).on("click", ".erase-button", function(){
+    console.log("erase")
+})
+
+    //the applied for button will move the job to the other table for applied for jobs
 })
