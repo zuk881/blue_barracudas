@@ -84,7 +84,7 @@ $(document).ready(function () {
       newResult.attr("id","result-" + key);
       // add table data
       var newSaveButton = $("<td>").html("<button type='button' class='btn btn-primary btn-sm save-button'>Save</button>")
-      var newJobTitle = $("<td>").text(value.title);
+      var newJobTitle = $("<td>").html("<a href='"+ value.url + "' target='_blank'>" +value.title + "</a>");
       var newEmployer = $("<td>").text(value.company);
       var newJobLocation = $("<td>").text(value.location);
       var newJobDescription = $("<td>").addClass("overflow-auto").html(value.description.substring(0, 250) + "...<a href='#'data-toggle='modal' data-target='#exampleModalScrollable'> see more </a>");
