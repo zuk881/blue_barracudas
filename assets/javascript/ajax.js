@@ -95,6 +95,7 @@ $(document).ready(function () {
                 saveButton.attr("data-title", value.title)
                 saveButton.attr("data-company", value.company)
                 saveButton.attr("data-loc", value.location)
+                //i need to make an erase button here, so that i can save it's details in the database as well
                 //now I make another var newsavebutton which creates the data cell 
                 var newSaveButton = $("<td>")
                 //that I append the actual button to
@@ -192,14 +193,13 @@ $(document).ready(function () {
         //the object will be pushed to firebase on that signed in users path
         e.preventDefault();
         console.log("save")
-        console.log($(this).attr("data-url"))
         //these are the attributes that were created when the button was made.
         database.ref().push({
             title: $(this).attr("data-title"),
             location: $(this).attr("data-loc"),
             company: $(this).attr("data-company"),
-            url: $(this).attr("data-url")
-
+            url: $(this).attr("data-url"),
+            savebutton: $(this)
         })
     })
     //the saved jobs will then be pulled from firebase to be displayed on the favorites html page
@@ -208,6 +208,10 @@ $(document).ready(function () {
         console.log(snapshot.val());
         //and store them in new variables
         var eraseButton = $("<button>").text("erase").addClass("btn btn-primary btn-sm erase-button")
+        eraseButton.attr("data-title", snapshot.val().title)
+        eraseButton.attr("data-company", snapshot.val().company)
+        eraseButton.attr("data-loc", snapshot.val().location)
+        eraseButton.attr("data-url", snapshot.val().url)
         var appliedButton = $("<button>").text("i've applied").addClass("btn btn-primary btn-sm applied-button")
         var savedTitle = snapshot.val().title
         var savedLoc = snapshot.val().location
@@ -223,9 +227,7 @@ $(document).ready(function () {
             $("<td>").text(savedURL)
         )
         $(".job-info-saved").append(newRow);
-            database.ref().remove({
-                
-            })
+           
     })
 
 
@@ -235,6 +237,14 @@ $(document).ready(function () {
     //the erase button will remove the saved job from firebase and from the table at the same time
 $(document).on("click", ".erase-button", function(){
     console.log("erase")
+    var adaRef = firebase.database().ref();
+adaRef.remove()
+  .then(function() {
+    console.log("Remove succeeded.")
+  })
+  .catch(function(error) {
+    console.log("Remove failed: " + error.message)
+  });
 })
 
     //the applied for button will move the job to the other table for applied for jobs
