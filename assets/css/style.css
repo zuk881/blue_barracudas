@@ -157,6 +157,7 @@ margin: 5px;
 
 .modal-body {
     color: black;
+}
 
 nav {
     background-color: lightgray;
@@ -170,5 +171,4 @@ nav {
 .nav-wrapper {
     background-color: cornflowerblue;
     border-radius: 10px;
-
 }
