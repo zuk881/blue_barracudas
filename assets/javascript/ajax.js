@@ -41,13 +41,13 @@ $(document).ready(function () {
                 newResult.attr("id", "result-" + key);
 
                 // create new button
-                var saveButton = $("<button>");
+                var saveButton = $("<a>").addClass("btn-floating btn-large waves-effect waves-light blue save-button").html('<i class="material-icons">save</i></a></button>')
                 // add text to button
-                saveButton.text("Save")
+                // saveButton.text("Save")
                 //add bootstrap to button
-                saveButton.addClass("btn-floating btn-large waves-effect waves-light blue save-button")
+                saveButton.addClass("btn-floating btn-large waves-effect waves-light blue save-button");
                 // add value to button 
-                saveButton.attr("data-url", value.MatchedObjectDescriptor.ApplyURI)
+                saveButton.attr("data-url", value.MatchedObjectDescriptor.ApplyURI[0])
                 saveButton.attr("data-title", value.MatchedObjectDescriptor.PositionTitle)
                 saveButton.attr("data-company", value.MatchedObjectDescriptor.OrganizationName)
                 saveButton.attr("data-loc", value.MatchedObjectDescriptor.PositionLocationDisplay)
@@ -74,7 +74,7 @@ $(document).ready(function () {
 
                 // $('#exampleModalScrollable').modal('show') 
                 // append table data to new row
-                newResult.append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
+                newResult.append(newSaveButton).append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
                 // append new row to table body
                 $(".job-info-1").append(newResult);
 
