@@ -105,6 +105,7 @@ label {
     background-color: cornflowerblue;
     border-radius: 5px;
     padding: 5px;
+    color:white;
 }
 
 #job-1 {
@@ -152,4 +153,18 @@ h2 {
 background-color: cornflowerblue;
 border-radius: 10px;
 margin: 5px;
+}
+
+nav {
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+.btn {
+    color: white;
+}
+
+.nav-wrapper {
+    background-color: cornflowerblue;
+    border-radius: 10px;
 }
