@@ -153,3 +153,7 @@ background-color: cornflowerblue;
 border-radius: 10px;
 margin: 5px;
 }
+
+.modal-body {
+    color: black;
+}
