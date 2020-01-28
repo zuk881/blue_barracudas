@@ -39,17 +39,39 @@ $(document).ready(function () {
                 var newResult = $("<tr>");
                 newResult.addClass("search-result");
                 newResult.attr("id", "result-" + key);
+
+                // create new button
+                var saveButton = $("<button>");
+                // add text to button
+                saveButton.text("Save")
+                //add bootstrap to button
+                saveButton.addClass("btn-floating btn-large waves-effect waves-light blue save-button")
+                // add value to button 
+                saveButton.attr("data-url", value.MatchedObjectDescriptor.ApplyURI)
+                saveButton.attr("data-title", value.MatchedObjectDescriptor.PositionTitle)
+                saveButton.attr("data-company", value.MatchedObjectDescriptor.OrganizationName)
+                saveButton.attr("data-loc", value.MatchedObjectDescriptor.PositionLocationDisplay)
+
+                // create table cell
+                var newSaveButton = $("<td>");
+                // append button to the cell
+                newSaveButton.append(saveButton);
+
                 // add table data
                 // console.log(value);
                 var newJobTitle = $("<td>").html("<a href='" + value.MatchedObjectDescriptor.ApplyURI[0] + "' target='_blank'>" + value.MatchedObjectDescriptor.PositionTitle + "</a>")
 
-
                 var newEmployer = $("<td>").text(value.MatchedObjectDescriptor.OrganizationName);
                 var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
-                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a href='#'data-toggle='modal' data-target='#exampleModalScrollable'> see more </a>");
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a href='#'data-toggle='modal' data-target='#exampleModalScrollable' class='see-more'> see more </a>");
                 $(".modal-body").val(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
-                $('#exampleModalScrollable .modal-body').html();
-                //open the modal
+                $('#exampleModalScrollable .modal-body').append($("<span class='description-text' id='description-" + key + "'>").text(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
+                $(".description-text").hide();
+                $(".see-more").on("click", function () {
+                    // $(".description-text").hide();
+                    $("#description-" + key + "").show().val();
+                });
+
                 // $('#exampleModalScrollable').modal('show') 
                 // append table data to new row
                 newResult.append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
@@ -88,14 +110,20 @@ $(document).ready(function () {
                 var saveButton = $("<a>").addClass("btn-floating btn-large waves-effect waves-light blue").html('<i class="material-icons">save</i></a></button>')
                 // var saveButton = $("<button>");
                 //add the text to the button
+
+                saveButton.text("Save");
+                //add bootstrap classes to this button and a save-button class for click functionality
+                saveButton.addClass("btn-floating btn-large waves-effect waves-light blue save-button");
+
                 // saveButton.text("Save")
                 //add bootstrap classes to this button and a save-button class for click functionality
                 // saveButton.addClass("btn btn-primary btn-sm save-button")
+
                 //here I add the attributes for the values that I will need to push to the database in the click function
-                saveButton.attr("data-url", value.url)
-                saveButton.attr("data-title", value.title)
-                saveButton.attr("data-company", value.company)
-                saveButton.attr("data-loc", value.location)
+                // saveButton.attr("data-url", value.url)
+                // saveButton.attr("data-title", value.title)
+                // saveButton.attr("data-company", value.company)
+                // saveButton.attr("data-loc", value.location)
                 //i need to make an erase button here, so that i can save it's details in the database as well
                 //now I make another var newsavebutton which creates the data cell 
                 var newSaveButton = $("<td>")
@@ -236,7 +264,7 @@ $(document).ready(function () {
             $("<td>").text(savedURL)
         )
         $(".job-info-saved").append(newRow);
-           
+
     })
 
 
@@ -244,17 +272,17 @@ $(document).ready(function () {
 
     //give functionality to the new buttons in the saved jobs table
     //the erase button will remove the saved job from firebase and from the table at the same time
-$(document).on("click", ".erase-button", function(){
-    console.log("erase")
-    var removeRef = firebase.database().ref();
-removeRef.remove()
-  .then(function() {
-    console.log("Remove succeeded.")
-  })
-  .catch(function(error) {
-    console.log("Remove failed: " + error.message)
-  });
-})
+    $(document).on("click", ".erase-button", function () {
+        console.log("erase")
+        var removeRef = firebase.database().ref();
+        removeRef.remove()
+            .then(function () {
+                console.log("Remove succeeded.")
+            })
+            .catch(function (error) {
+                console.log("Remove failed: " + error.message)
+            });
+    })
 
     //the applied for button will move the job to the other table for applied for jobs
 })

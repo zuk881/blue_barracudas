@@ -155,6 +155,10 @@ border-radius: 10px;
 margin: 5px;
 }
 
+
+.modal-body {
+    color: black;
+
 nav {
     background-color: lightgray;
     border-radius: 10px;
@@ -167,4 +171,5 @@ nav {
 .nav-wrapper {
     background-color: cornflowerblue;
     border-radius: 10px;
+
 }
