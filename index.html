@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/reset.css">
-
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -14,10 +17,10 @@
 </head>
 
 <body>
-  
-  <h1 class="text-center" id="lead">Let's Get Paid</h1>
 
-  <div class="container table-1">
+    <h1 class="text-center" id="lead">Let's Get Paid</h1>
+
+    <div class="container table-1">
         <div class="row">
             <div class="col-sm">
                 <div class="form-group">
@@ -31,20 +34,23 @@
                         placeholder="location">
                 </div>
                 <div class="form-group">
-                    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                    <button id="submit" class="btn waves-effect waves-light blue" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button id="submit">
                 </div>
             </div>
             <div class="col-sm">
-                <nav class="nav">
-                    <a class="nav-link" href="index.html"><h2>Search Page</h2></a>
-                    <a class="nav-link" href="favorites.html"><h2>Favorites Page</h2></a>
-                </nav>
+                <nav>
+                    <div class="nav-wrapper">
+                      <a href="favorites.html" class="brand-logo center">Saved Jobs</a>
+                    </div>
+                  </nav>
             </div>
         </div>
-        
-  </div>
 
-  <div class="container table-1">
+    </div>
+
+    <div class="container table-1">
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -59,10 +65,10 @@
                 </tr>
             </thead>
             <tbody class="job-info-1">
-            <!-- Results from USAJobs will appear here -->
+                <!-- Results from USAJobs will appear here -->
             </tbody>
         </table>
-   </div>
+    </div>
 
     <div class="container table-2">
         <table class="table table-hover">
@@ -79,7 +85,7 @@
                 </tr>
             </thead>
             <tbody class="job-info-2">
-            <!-- Results from Github jobs will appear here -->
+                <!-- Results from Github jobs will appear here -->
             </tbody>
         </table>
     </div>
@@ -99,7 +105,7 @@
                 </tr>
             </thead>
             <tbody class="job-info-3">
-            <!-- Not sure which results will appear here -->
+                <!-- Not sure which results will appear here -->
             </tbody>
         </table>
     </div>
@@ -119,7 +125,7 @@
                 </tr>
             </thead>
             <tbody class="job-info-4">
-            <!-- Not sure which results will appear here -->
+                <!-- Not sure which results will appear here -->
             </tbody>
         </table>
     </div><br><br><br>
@@ -146,6 +152,9 @@
         </div>
     </div>
 
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
