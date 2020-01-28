@@ -107,11 +107,18 @@ $(document).ready(function () {
                 newResult.addClass("search-result");
                 newResult.attr("id", "result-" + key);
                 // here i make a var called save button and create an html button using jquery
-                var saveButton = $("<button>");
+                var saveButton = $("<a>").addClass("btn-floating btn-large waves-effect waves-light blue").html('<i class="material-icons">save</i></a></button>')
+                // var saveButton = $("<button>");
                 //add the text to the button
+
                 saveButton.text("Save");
                 //add bootstrap classes to this button and a save-button class for click functionality
                 saveButton.addClass("btn-floating btn-large waves-effect waves-light blue save-button");
+
+                // saveButton.text("Save")
+                //add bootstrap classes to this button and a save-button class for click functionality
+                // saveButton.addClass("btn btn-primary btn-sm save-button")
+
                 //here I add the attributes for the values that I will need to push to the database in the click function
                 // saveButton.attr("data-url", value.url)
                 // saveButton.attr("data-title", value.title)
@@ -126,7 +133,7 @@ $(document).ready(function () {
                 var newJobTitle = $("<td>").html("<a href='" + value.url + "' target='_blank'>" + value.title + "</a>");
                 var newEmployer = $("<td>").text(value.company);
                 var newJobLocation = $("<td>").text(value.location);
-                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.description.substring(0, 250) + "...<a href='#'data-toggle='modal' data-target='#exampleModalScrollable'> see more </a>");
+                var newJobDescription = $("<td>").html(value.description.substring(0, 250) + "...<a href='#'data-toggle='modal' data-target='#exampleModalScrollable'> see more </a>");
                 // append table data to new row
                 newResult.append(newSaveButton).append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
                 // append new row to the appropriate table body
