@@ -107,11 +107,11 @@ $(document).ready(function () {
                 newResult.addClass("search-result");
                 newResult.attr("id", "result-" + key);
                 // here i make a var called save button and create an html button using jquery
-                var saveButton = $("<a>").addClass("btn-floating btn-large waves-effect waves-light blue").html('<i class="material-icons">save</i></a></button>')
+                var saveButton = $("<a>").addClass("btn-floating btn-large waves-effect waves-light blue save-button").html('<i class="material-icons">save</i></a></button>')
                 // var saveButton = $("<button>");
                 //add the text to the button
 
-                saveButton.text("Save");
+                // saveButton.text("Save");
                 //add bootstrap classes to this button and a save-button class for click functionality
                 saveButton.addClass("btn-floating btn-large waves-effect waves-light blue save-button");
 
@@ -120,10 +120,10 @@ $(document).ready(function () {
                 // saveButton.addClass("btn btn-primary btn-sm save-button")
 
                 //here I add the attributes for the values that I will need to push to the database in the click function
-                // saveButton.attr("data-url", value.url)
-                // saveButton.attr("data-title", value.title)
-                // saveButton.attr("data-company", value.company)
-                // saveButton.attr("data-loc", value.location)
+                saveButton.attr("data-url", value.url)
+                saveButton.attr("data-title", value.title)
+                saveButton.attr("data-company", value.company)
+                saveButton.attr("data-loc", value.location)
                 //i need to make an erase button here, so that i can save it's details in the database as well
                 //now I make another var newsavebutton which creates the data cell 
                 var newSaveButton = $("<td>")
@@ -272,17 +272,17 @@ $(document).ready(function () {
 
     //give functionality to the new buttons in the saved jobs table
     //the erase button will remove the saved job from firebase and from the table at the same time
-    $(document).on("click", ".erase-button", function () {
-        console.log("erase")
-        var removeRef = firebase.database().ref();
-        removeRef.remove()
-            .then(function () {
-                console.log("Remove succeeded.")
-            })
-            .catch(function (error) {
-                console.log("Remove failed: " + error.message)
-            });
-    })
+    // $(document).on("click", ".erase-button", function () {
+    //     console.log("erase")
+    //     var removeRef = firebase.database().ref();
+    //     removeRef.remove()
+    //         .then(function () {
+    //             console.log("Remove succeeded.")
+    //         })
+    //         .catch(function (error) {
+    //             console.log("Remove failed: " + error.message)
+    //         });
+    // })
 
     //the applied for button will move the job to the other table for applied for jobs
 })
