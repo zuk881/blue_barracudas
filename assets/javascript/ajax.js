@@ -1,7 +1,6 @@
 $(document).ready(function () {
     console.log("ready")
 
-
     // function to display results after submit button is pressed
     $("#submit").on("click", function (e) {
         e.preventDefault();
@@ -64,17 +63,20 @@ $(document).ready(function () {
                 var newEmployer = $("<td>").text(value.MatchedObjectDescriptor.OrganizationName);
                 var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
                 
-                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal1' class='see-more modal-trigger'> see more </a>");
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal1' class='see-more modal-trigger modal-close'> see more </a>");
 
                 // $(".modal-body").val(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
                 $('.modal-body').append($("<span class='description-text' id='description-" + key + "'>").text(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
                 // $(".description-text").hide();
-                $(".modal-trigger").on("click", function (e) {
+                $(".see-more").on("click", function (e) {
                     e.preventDefault();
-                    console.log("click working")
+                    instance.open();
+                    console.log("click working");
+                    $(".modal-trigger").modal();
                 
                     // $(".description-text").hide();
-                    $("#description-" + key + "").open().val();
+                    $("#description-" + key + "").show().val();
+                   
                 });
 
                 // $('#exampleModalScrollable').modal('show') 
@@ -84,10 +86,7 @@ $(document).ready(function () {
                 $(".job-info-1").append(newResult);
 
             });
-
-
         })
-
 
         //writing ajax functionality for the github jobs api
 
