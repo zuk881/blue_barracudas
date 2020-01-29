@@ -1,10 +1,11 @@
 body {
     min-height: calc(100vh - 70px);
     background: url("../images/cool_background-1.jpg") no-repeat center center fixed; 
-    -webkit-background-size: cover;
+    background: url("../images/5-dots.png") repeat ;
+    /*-webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    -o-background-size: cover; 
+    background-size: cover; */
     color: white;
     }
  
@@ -40,9 +41,11 @@ h1:after {
 }
 
 
+
+
 .table-1 {
     border-radius: 12px;
-    padding:0px 0px 0px 0px;
+    padding:10px 0px 10px 0px;
     padding: 15px;
     color: white;
     background-color: lightgray;
@@ -92,9 +95,12 @@ footer {
 
 label {
     font-weight: bolder;
-    background-color: cornflowerblue;
-    border-radius: 5px;
+    /*background-color: cornflowerblue;
+    border-radius: 5px;*/
     padding: 5px;
+    color: black;
+    font-size: 25px;
+
 }
 
 #results-title {
@@ -132,8 +138,41 @@ label {
 
 #h1 {
     font-weight: bolder;
-    background-color: cornflowerblue;
+    background-color: grey;
     border-radius: 5px;
     padding: 5px; 
     color: white;
+}
+
+
+
+.form-group  {
+    width: 30%;
+    margin: 0 auto;
+
+}
+
+.form-group label {
+    width: 60%;
+    align-content: center;
+    margin-left: 60px;
+    text-align: center;
+    
+}
+
+.form-group button {
+    width: 60%;
+    align-content: center;
+    margin-left: 60px;
+}
+
+
+label {
+    font-weight: bolder;
+    /*background-color: cornflowerblue;
+    border-radius: 5px;*/
+    padding: 5px;
+    color: black;
+    font-size: 25px;
+
 }
