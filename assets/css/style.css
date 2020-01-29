@@ -1,31 +1,52 @@
 body {
+    /*Either use the background pattern or just the color alone */
     min-height: calc(100vh - 70px);
-    background: url("../images/city-wallpaper-5.jpg") no-repeat center center fixed; 
+    /*background: url("../images/what-the-hex.jpg") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
+    -o-background-size: cover;*/
     background-size: cover;
+    background-color: #3D345A;
     color: white;
     }
  
 
 #lead {
-    font-size: 140px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial;
+    font-size: 90px;
+    /* font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial; */
+    font-family: 'Roboto', sans-serif;
     padding: 12px;
     margin: auto;
-    background: linear-gradient(to bottom, #cfc09f 22%,#634f2c 24%, #cfc09f 26%, #cfc09f 27%,#ffecb3 40%,#3a2c0f 78%); 
+    /*background: linear-gradient(to bottom, #cfc09f 22%,#634f2c 24%, #cfc09f 26%, #cfc09f 27%,#ffecb3 40%,#3a2c0f 78%); 
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: #fff;
-    font-family: 'Playfair Display', serif;
+    -webkit-text-fill-color: transparent;*/
+    color: #EFEEF1;
+    /*font-family: 'Playfair Display', serif;*/
     position: relative;
 	text-transform: uppercase;	
 	margin: 0;
 	font-weight: 400;
 }
 
-h1:after {
+#sub {
+    font-size: 90px;
+    /* font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial; */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    padding: 12px;
+    margin: auto;
+    /*background: linear-gradient(to bottom, #cfc09f 22%,#634f2c 24%, #cfc09f 26%, #cfc09f 27%,#ffecb3 40%,#3a2c0f 78%); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;*/
+    color: #EFEEF1;
+    /*font-family: 'Playfair Display', serif;*/
+    position: relative;
+	text-transform: uppercase;	
+	margin: 0;
+	
+}
+
+/*h1:after {
     background: none;
     content: attr(data-heading);
     left: 0;
@@ -37,7 +58,7 @@ h1:after {
 		0 1px 1px #c6bb9f, 
 		5px 5px 10px rgba(0, 0, 0, 0.4),
 		-5px -5px 10px rgba(0, 0, 0, 0.4);
-}
+}*/
 
 
 .table-1 {
@@ -102,7 +123,7 @@ footer {
 
 label {
     font-weight: bolder;
-    background-color: cornflowerblue;
+    background-color: #8F8B81;
     border-radius: 5px;
     padding: 5px;
     color:white;
@@ -115,10 +136,11 @@ label {
 
 #h1 {
     font-weight: bolder;
-    background-color: cornflowerblue;
+    background-color: #9E8FAC;
     border-radius: 5px;
     padding: 5px; 
     color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
 td {
@@ -150,7 +172,7 @@ h2 {
 }
 
 .nav-link {
-background-color: cornflowerblue;
+background-color: #9E8FAC;
 border-radius: 10px;
 margin: 5px;
 }
@@ -165,6 +187,11 @@ nav {
 }
 
 .nav-wrapper {
-    background-color: cornflowerblue;
+    background-color: #809D87;
     border-radius: 10px;
 }
+
+.container {
+    background-color: #EFEEF1; 
+}
+
