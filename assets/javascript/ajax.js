@@ -45,7 +45,7 @@ $(document).ready(function () {
                 // add text to button
                 // saveButton.text("Save")
                 //add bootstrap to button
-                // saveButton.addClass("btn-floating btn-large waves-effect waves-light blue save-button");
+
                 // add value to button 
                 saveButton.attr("data-url", value.MatchedObjectDescriptor.ApplyURI[0])
                 saveButton.attr("data-title", value.MatchedObjectDescriptor.PositionTitle)
@@ -118,7 +118,6 @@ $(document).ready(function () {
 
                 // saveButton.text("Save");
                 //add bootstrap classes to this button and a save-button class for click functionality
-                saveButton.addClass("btn-floating btn-large waves-effect waves-light blue save-button");
 
                 // saveButton.text("Save")
                 //add bootstrap classes to this button and a save-button class for click functionality
@@ -223,6 +222,14 @@ $(document).ready(function () {
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         var database = firebase.database();
+        var rootRef = database.ref('users');
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in.
+            } else {
+                // No user is signed in.
+            }
+        });
 
         //write the functionality of the save buttons
         //_______________________________________________
@@ -235,22 +242,22 @@ $(document).ready(function () {
             //the object will be pushed to firebase on that signed in users path
             e.preventDefault();
             console.log("save")
-            var savedJob = {
+            // var savedJob = {
+            //     title: $(this).attr("data-title"),
+            //     location: $(this).attr("data-loc"),
+            //     company: $(this).attr("data-company"),
+            //     url: $(this).attr("data-url"),
+                // savebutton: $(this)
+
+            
+            //these are the attributes that were created when the button was made.
+            rootRef.child(firebase.auth().currentUser.displayName).push({
                 title: $(this).attr("data-title"),
                 location: $(this).attr("data-loc"),
                 company: $(this).attr("data-company"),
                 url: $(this).attr("data-url"),
                 // savebutton: $(this)
-
-            }
-            //these are the attributes that were created when the button was made.
-            database.ref().push('/users/'+savedJob
-                // title: $(this).attr("data-title"),
-                // location: $(this).attr("data-loc"),
-                // company: $(this).attr("data-company"),
-                // url: $(this).attr("data-url"),
-                // savebutton: $(this)
-            )
+            })
         })
         //the saved jobs will then be pulled from firebase to be displayed on the favorites html page
         //use the child added function to take the values from the db
