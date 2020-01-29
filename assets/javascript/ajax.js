@@ -45,6 +45,7 @@ $(document).ready(function () {
                 // add text to button
                 // saveButton.text("Save")
                 //add bootstrap to button
+
                 // add value to button 
                 saveButton.attr("data-url", value.MatchedObjectDescriptor.ApplyURI[0])
                 saveButton.attr("data-title", value.MatchedObjectDescriptor.PositionTitle)
@@ -62,13 +63,18 @@ $(document).ready(function () {
 
                 var newEmployer = $("<td>").text(value.MatchedObjectDescriptor.OrganizationName);
                 var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
-                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a href='#'data-toggle='modal' data-target='#exampleModalScrollable' class='see-more'> see more </a>");
-                $(".modal-body").val(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
-                $('#exampleModalScrollable .modal-body').append($("<span class='description-text' id='description-" + key + "'>").text(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
-                $(".description-text").hide();
-                $(".see-more").on("click", function () {
+                
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal1' class='see-more modal-trigger'> see more </a>");
+
+                // $(".modal-body").val(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
+                $('.modal-body').append($("<span class='description-text' id='description-" + key + "'>").text(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
+                // $(".description-text").hide();
+                $(".modal-trigger").on("click", function (e) {
+                    e.preventDefault();
+                    console.log("click working")
+                
                     // $(".description-text").hide();
-                    $("#description-" + key + "").show().val();
+                    $("#description-" + key + "").open().val();
                 });
 
                 // $('#exampleModalScrollable').modal('show') 
