@@ -62,7 +62,7 @@ $(document).ready(function () {
 
                 var newEmployer = $("<td>").text(value.MatchedObjectDescriptor.OrganizationName);
                 var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
-                
+
                 var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal1' class='see-more modal-trigger modal-close'> see more </a>");
 
                 // $(".modal-body").val(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
@@ -73,10 +73,10 @@ $(document).ready(function () {
                     instance.open();
                     console.log("click working");
                     $(".modal-trigger").modal();
-                
+
                     // $(".description-text").hide();
                     $("#description-" + key + "").show().val();
-                   
+
                 });
 
                 // $('#exampleModalScrollable').modal('show') 
@@ -140,135 +140,155 @@ $(document).ready(function () {
                 $(".modal-body").val(value.description);
                 $('#exampleModalScrollable .modal-body').append($("<span class='description-text' id='description-" + key + "'>").html(value.description));
                 $(".description-text").hide();
-                $(document).on("click",".see-more", function () {
+                $(document).on("click", ".see-more", function () {
                     console.log(value.description)
                     // $(".description-text").hide();
                     $("#description-" + key + "").show().val();
                 })
-                    // append table data to new row
-                    newResult.append(newSaveButton).append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
-                    // append new row to the appropriate table body
-                    $(".job-info-2").append(newResult);
-                    // });
-
-
-                })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                // //ajax for indeed api
-                // var keywordIndeed = $("#keyword").val()
-                // var loc= $("#location").val()
-                // var settings = {
-                // 	"async": true,
-                // 	"crossDomain": true,
-                // 	"url": "https://indeed-indeed.p.rapidapi.com/apigetjobs?v=2&format=json",
-                // 	"method": "GET",
-                // 	"headers": {
-                // 		"x-rapidapi-host": "indeed-indeed.p.rapidapi.com",
-                // 		"x-rapidapi-key": "6a24900b4dmsh49b37a3833d9488p16a5cfjsnf50ec338300e"
-                // 	}
-                // }
-
-                // $.ajax(settings).done(function (response) {
-                // 	console.log(response);
+                // append table data to new row
+                newResult.append(newSaveButton).append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
+                // append new row to the appropriate table body
+                $(".job-info-2").append(newResult);
                 // });
 
 
-                //writing ajax for reed api
-                // var keywordReed = "web"
-                // var locationReed = "london"
-                // var queryURLreed = "https://www.reed.co.uk/api/search?keywords="+keywordReed+"&locationName="+locationReed
-
-                // $.ajax ({
-                //     url: queryURLreed,
-                //     method: "GET"
-                // }).then(function(response){
-                //     var results = response
-                //     console.log(results)
-                // })
-
-
-                //Empties the input boxes after the submit button is clicked
-                $("#keyword").val(" ")
-                $("#location").val(" ")
-
-            });
-           
-
-        });
-        //initialize the firebase database where we can save user saved jobs
-        var firebaseConfig = {
-            apiKey: "AIzaSyDLgO9rlM5PW8AhrIWk31hdSwHxaEHbyhA",
-            authDomain: "blue-barracuda.firebaseapp.com",
-            databaseURL: "https://blue-barracuda.firebaseio.com",
-            projectId: "blue-barracuda",
-            storageBucket: "blue-barracuda.appspot.com",
-            messagingSenderId: "436435380595",
-            appId: "1:436435380595:web:9989d968eb18cc60cd7d06"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        var database = firebase.database();
-        var rootRef = database.ref('users');
-        firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-                // User is signed in.
-            } else {
-                // No user is signed in.
-            }
-        });
-
-        //write the functionality of the save buttons
-        //_______________________________________________
-        //document click function that will allow the user to click
-
-        //on the dynamically generated save buttons from the api calls that display in the save
-        //column of the table rows
-        //when the user clicks the save button
-        $(document).on("click", ".save-button", function (e) {
-            //the object will be pushed to firebase on that signed in users path
-            e.preventDefault();
-            console.log("save")
-            // var savedJob = {
-            //     title: $(this).attr("data-title"),
-            //     location: $(this).attr("data-loc"),
-            //     company: $(this).attr("data-company"),
-            //     url: $(this).attr("data-url"),
-                // savebutton: $(this)
-
-            
-            //these are the attributes that were created when the button was made.
-            rootRef.child(firebase.auth().currentUser.displayName).push({
-                title: $(this).attr("data-title"),
-                location: $(this).attr("data-loc"),
-                company: $(this).attr("data-company"),
-                url: $(this).attr("data-url"),
-                // savebutton: $(this)
             })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // //ajax for indeed api
+            // var keywordIndeed = $("#keyword").val()
+            // var loc= $("#location").val()
+            // var settings = {
+            // 	"async": true,
+            // 	"crossDomain": true,
+            // 	"url": "https://indeed-indeed.p.rapidapi.com/apigetjobs?v=2&format=json",
+            // 	"method": "GET",
+            // 	"headers": {
+            // 		"x-rapidapi-host": "indeed-indeed.p.rapidapi.com",
+            // 		"x-rapidapi-key": "6a24900b4dmsh49b37a3833d9488p16a5cfjsnf50ec338300e"
+            // 	}
+            // }
+
+            // $.ajax(settings).done(function (response) {
+            // 	console.log(response);
+            // });
+
+
+            //writing ajax for reed api
+            // var keywordReed = "web"
+            // var locationReed = "london"
+            // var queryURLreed = "https://www.reed.co.uk/api/search?keywords="+keywordReed+"&locationName="+locationReed
+
+            // $.ajax ({
+            //     url: queryURLreed,
+            //     method: "GET"
+            // }).then(function(response){
+            //     var results = response
+            //     console.log(results)
+            // })
+
+
+            //Empties the input boxes after the submit button is clicked
+            $("#keyword").val(" ")
+            $("#location").val(" ")
+
+        });
+
+
+    });
+    //initialize the firebase database where we can save user saved jobs
+    var firebaseConfig = {
+        apiKey: "AIzaSyDLgO9rlM5PW8AhrIWk31hdSwHxaEHbyhA",
+        authDomain: "blue-barracuda.firebaseapp.com",
+        databaseURL: "https://blue-barracuda.firebaseio.com",
+        projectId: "blue-barracuda",
+        storageBucket: "blue-barracuda.appspot.com",
+        messagingSenderId: "436435380595",
+        appId: "1:436435380595:web:9989d968eb18cc60cd7d06"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
+    var rootRef = database.ref('users');
+    var userId ;
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in.
+            console.log(user)
+            userId = firebase.auth().currentUser.uid;
+        } else {
+            console.log("invalid")
+            // No user is signed in.
+        }
+    });
+   
+    $("#logout").on("click", function () {
+        firebase.auth().signOut()
+        location.href = "auth.html"
+
+    }) 
+    
+
+    //write the functionality of the save buttons
+    //_______________________________________________
+    //document click function that will allow the user to click
+
+    //on the dynamically generated save buttons from the api calls that display in the save
+    //column of the table rows
+    //when the user clicks the save button
+    $(document).on("click", ".save-button", function (e) {
+        //the object will be pushed to firebase on that signed in users path
+        e.preventDefault();
+        console.log("save")
+        // var savedJob = {
+        //     title: $(this).attr("data-title"),
+        //     location: $(this).attr("data-loc"),
+        //     company: $(this).attr("data-company"),
+        //     url: $(this).attr("data-url"),
+        // savebutton: $(this)
+
+     userId = firebase.auth().currentUser.uid;
+        //these are the attributes that were created when the button was made.
+        rootRef.push({
+            title: $(this).attr("data-title"),
+            location: $(this).attr("data-loc"),
+            company: $(this).attr("data-company"),
+            url: $(this).attr("data-url"),
+            userid: userId
+            // savebutton: $(this)
         })
-        //the saved jobs will then be pulled from firebase to be displayed on the favorites html page
-        //use the child added function to take the values from the db
-        // var savedRef = database.ref('users')
-        rootRef.on("child_added", function (snapshot) {
-            console.log(snapshot.val());
-            console.log("in snapshot")
+    })
+    //the saved jobs will then be pulled from firebase to be displayed on the favorites html page
+    //use the child added function to take the values from the db
+    // var savedRef = database.ref('users')
+    rootRef.on("child_added", function (snapshot) {
+        console.log(snapshot.val());
+        console.log("in snapshot")
+
+
+        if (snapshot.val().userid === userId) {
+
+
             //and store them in new variables            
             var savedTitle = snapshot.val().title
+            console.log(savedTitle)
             console.log(snapshot.val().title)
             var savedLoc = snapshot.val().location
+            console.log(savedLoc)
             var savedCompany = snapshot.val().company
+            console.log(savedCompany)
             var savedURL = snapshot.val().url
             var eraseButton = $("<a>").addClass("btn-floating btn-large waves-effect waves-light red erase-button").html('<i class="material-icons">delete</i></a></button>')
             eraseButton.attr("data-title", snapshot.val().title)
@@ -288,24 +308,25 @@ $(document).ready(function () {
             )
             $(".job-info-saved").append(newRow);
             console.log("appended");
-        })
-
-
-
-
-        //give functionality to the new buttons in the saved jobs table
-        //the erase button will remove the saved job from firebase and from the table at the same time
-        $(document).on("click", ".erase-button", function () {
-            console.log("erase")
-            var removeRef = firebase.database().ref();
-            removeRef.remove()
-                .then(function () {
-                    console.log("Remove succeeded.")
-                })
-                .catch(function (error) {
-                    console.log("Remove failed: " + error.message)
-                });
-        })
-
-        //the applied for button will move the job to the other table for applied for jobs
+        }
     })
+
+
+
+
+    //give functionality to the new buttons in the saved jobs table
+    //the erase button will remove the saved job from firebase and from the table at the same time
+    $(document).on("click", ".erase-button", function () {
+        console.log("erase")
+        var removeRef = firebase.database().ref();
+        removeRef.remove()
+            .then(function () {
+                console.log("Remove succeeded.")
+            })
+            .catch(function (error) {
+                console.log("Remove failed: " + error.message)
+            });
+    })
+
+    //the applied for button will move the job to the other table for applied for jobs
+})
