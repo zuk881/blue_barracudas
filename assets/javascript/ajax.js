@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    $('.modal').modal();
     console.log("ready")
 
     // function to display results after submit button is pressed
@@ -87,10 +86,7 @@ $(document).ready(function () {
                 $(".job-info-1").append(newResult);
 
             });
-
-
         })
-
 
         //writing ajax functionality for the github jobs api
 
