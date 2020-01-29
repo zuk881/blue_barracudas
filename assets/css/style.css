@@ -60,13 +60,21 @@ body {
 		-5px -5px 10px rgba(0, 0, 0, 0.4);
 }*/
 
+#googleLogin {
+  font-size: 16px;
+  
+}
+
+#googleButton {
+    margin-top: 10px;
+}
 
 .table-1 {
     margin-top: 25px;
     border-radius: 12px;
     padding:0px 0px 0px 0px;
     padding: 15px;
-    color: white;
+    color: #8F8B81;
     background-color: lightgray;
 }
 
@@ -75,7 +83,7 @@ body {
     border-radius: 12px;
     padding:0px 0px 0px 0px;
     padding: 15px;
-    color: white;
+    color:#8F8B81;
     background-color: lightgray;
 }
 
@@ -84,7 +92,7 @@ body {
     border-radius: 12px;
     padding:0px 0px 0px 0px;
     padding: 15px;
-    color: white;
+    color: #8F8B81;
     background-color: lightgray;
 }
 
@@ -93,7 +101,7 @@ body {
     border-radius: 12px;
     padding:0px 0px 0px 0px;
     padding: 15px;
-    color: white;
+    color: #8F8B81;
     background-color: lightgray;
 }
 
@@ -103,7 +111,6 @@ body {
     padding:0px 0px 0px 0px;
     padding: 15px;
     color: white;
-    background-color: lightgray;
 }
 
 footer {
@@ -177,6 +184,11 @@ border-radius: 10px;
 margin: 5px;
 }
 
+
+.modal-body {
+    color: black;
+}
+
 nav {
     background-color: lightgray;
     border-radius: 10px;
@@ -193,5 +205,9 @@ nav {
 
 .container {
     background-color: #EFEEF1; 
+}
+
+footer {
+    z-index: 1000;
 }
 
