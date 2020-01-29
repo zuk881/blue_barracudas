@@ -205,7 +205,7 @@ $(document).ready(function () {
                 $("#location").val(" ")
 
             });
-
+           
 
         });
         //initialize the firebase database where we can save user saved jobs
@@ -260,19 +260,23 @@ $(document).ready(function () {
         })
         //the saved jobs will then be pulled from firebase to be displayed on the favorites html page
         //use the child added function to take the values from the db
-        database.ref().on("child_added", function (snapshot) {
+        // var savedRef = database.ref('users')
+        rootRef.on("child_added", function (snapshot) {
             console.log(snapshot.val());
-            //and store them in new variables
+            console.log("in snapshot")
+            //and store them in new variables            
+            var savedTitle = snapshot.val().title
+            console.log(snapshot.val().title)
+            var savedLoc = snapshot.val().location
+            var savedCompany = snapshot.val().company
+            var savedURL = snapshot.val().url
             var eraseButton = $("<a>").addClass("btn-floating btn-large waves-effect waves-light red erase-button").html('<i class="material-icons">delete</i></a></button>')
             eraseButton.attr("data-title", snapshot.val().title)
             eraseButton.attr("data-company", snapshot.val().company)
             eraseButton.attr("data-loc", snapshot.val().location)
             eraseButton.attr("data-url", snapshot.val().url)
             var appliedButton = $("<button>").text("i've applied").addClass("btn btn-primary btn-sm applied-button")
-            var savedTitle = snapshot.val().title
-            var savedLoc = snapshot.val().location
-            var savedCompany = snapshot.val().company
-            var savedURL = snapshot.val().url
+
 
             var newRow = $("<tr>").append(
                 $("<td>").html(eraseButton),
@@ -283,7 +287,7 @@ $(document).ready(function () {
                 $("<td>").text(savedURL)
             )
             $(".job-info-saved").append(newRow);
-
+            console.log("appended");
         })
 
 
