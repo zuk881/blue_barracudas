@@ -69,12 +69,13 @@ $(document).ready(function () {
                 // $(".modal-body").val(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
                 $('.modal-body').append($("<span class='description-text' id='description-" + key + "'>").text(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
                 // $(".description-text").hide();
-                $(".modal-trigger").on("click", function (e) {
+                $(".see-more").on("click", function (e) {
                     e.preventDefault();
-                    console.log("click working")
+                    console.log("click working");
+                    $(".modal-trigger").modal();
                 
                     // $(".description-text").hide();
-                    $("#description-" + key + "").open().val();
+                    $("#description-" + key + "").show().val();
                 });
 
                 // $('#exampleModalScrollable').modal('show') 
