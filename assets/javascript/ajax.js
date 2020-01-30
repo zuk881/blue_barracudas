@@ -62,15 +62,20 @@ $(document).ready(function () {
 
                 var newEmployer = $("<td>").text(value.MatchedObjectDescriptor.OrganizationName);
                 var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
+<<<<<<< HEAD
+                
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal-" + key + "' class='see-more modal-trigger modal-close'> see more </a>");
+=======
 
                 var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal1' class='see-more modal-trigger modal-close'> see more </a>");
+>>>>>>> 38f974482de0dacf8dcead57994dbd8f80d01409
 
                 // $(".modal-body").val(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
-                $('.modal-body').append($("<span class='description-text' id='description-" + key + "'>").text(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
+                $('.modal-body').append($("<span class='description-text' id='modal-" + key + "'>").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
                 // $(".description-text").hide();
                 $(".see-more").on("click", function (e) {
                     e.preventDefault();
-                    instance.open();
+
                     console.log("click working");
                     $(".modal-trigger").modal();
 
@@ -140,8 +145,13 @@ $(document).ready(function () {
                 $(".modal-body").val(value.description);
                 $('#exampleModalScrollable .modal-body').append($("<span class='description-text' id='description-" + key + "'>").html(value.description));
                 $(".description-text").hide();
+<<<<<<< HEAD
+                $(document).on("click",".see-more", function () {
+                    // console.log(value.description)
+=======
                 $(document).on("click", ".see-more", function () {
                     console.log(value.description)
+>>>>>>> 38f974482de0dacf8dcead57994dbd8f80d01409
                     // $(".description-text").hide();
                     $("#description-" + key + "").show().val();
                 })
