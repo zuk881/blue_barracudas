@@ -63,14 +63,14 @@ $(document).ready(function () {
                 var newEmployer = $("<td>").text(value.MatchedObjectDescriptor.OrganizationName);
                 var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
                 
-                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal1' class='see-more modal-trigger modal-close'> see more </a>");
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal-" + key + "' class='see-more modal-trigger modal-close'> see more </a>");
 
                 // $(".modal-body").val(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
-                $('.modal-body').append($("<span class='description-text' id='description-" + key + "'>").text(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
+                $('.modal-body').append($("<span class='description-text' id='modal-" + key + "'>").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
                 // $(".description-text").hide();
                 $(".see-more").on("click", function (e) {
                     e.preventDefault();
-                    instance.open();
+
                     console.log("click working");
                     $(".modal-trigger").modal();
                 
@@ -141,7 +141,7 @@ $(document).ready(function () {
                 $('#exampleModalScrollable .modal-body').append($("<span class='description-text' id='description-" + key + "'>").html(value.description));
                 $(".description-text").hide();
                 $(document).on("click",".see-more", function () {
-                    console.log(value.description)
+                    // console.log(value.description)
                     // $(".description-text").hide();
                     $("#description-" + key + "").show().val();
                 })
