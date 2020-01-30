@@ -222,7 +222,7 @@ $(document).ready(function () {
     firebase.initializeApp(firebaseConfig);
     var database = firebase.database();
     var rootRef = database.ref('users');
-    var userId ;
+    var userId;
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
@@ -233,13 +233,13 @@ $(document).ready(function () {
             // No user is signed in.
         }
     });
-   
+
     $("#logout").on("click", function () {
         firebase.auth().signOut()
         location.href = "auth.html"
 
-    }) 
-    
+    })
+
 
     //write the functionality of the save buttons
     //_______________________________________________
@@ -259,7 +259,7 @@ $(document).ready(function () {
         //     url: $(this).attr("data-url"),
         // savebutton: $(this)
 
-     userId = firebase.auth().currentUser.uid;
+        userId = firebase.auth().currentUser.uid;
         //these are the attributes that were created when the button was made.
         rootRef.push({
             title: $(this).attr("data-title"),
@@ -295,6 +295,7 @@ $(document).ready(function () {
             eraseButton.attr("data-company", snapshot.val().company)
             eraseButton.attr("data-loc", snapshot.val().location)
             eraseButton.attr("data-url", snapshot.val().url)
+            eraseButton.attr("data-userid", snapshot.val().userid)
             var appliedButton = $("<button>").text("i've applied").addClass("btn btn-primary btn-sm applied-button")
 
 
@@ -316,17 +317,23 @@ $(document).ready(function () {
 
     //give functionality to the new buttons in the saved jobs table
     //the erase button will remove the saved job from firebase and from the table at the same time
-    $(document).on("click", ".erase-button", function () {
+    $(document).on("click", ".erase-button", function (snapshot) {
         console.log("erase")
-        var removeRef = firebase.database().ref();
-        removeRef.remove()
-            .then(function () {
-                console.log("Remove succeeded.")
-            })
-            .catch(function (error) {
-                console.log("Remove failed: " + error.message)
-            });
-    })
+        // console.log(snapshot.val())
+        var userID = $(this).attr("data-userid")
+        var removeTitle = $(this).attr("data-title")
 
-    //the applied for button will move the job to the other table for applied for jobs
+        var removeRef = firebase.database().ref('users');
+        if (snapshot.val().userid===userId && snapshot.val().title===removeTitle) {
+            removeRef.remove()
+                .then(function () {
+                    console.log("Remove succeeded.")
+                })
+                .catch(function (error) {
+                    console.log("Remove failed: " + error.message)
+                });
+        }
+        
+    })
 })
+
