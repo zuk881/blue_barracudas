@@ -69,6 +69,11 @@ body {
     margin-top: 10px;
 }
 
+img {
+    max-width: 60%;
+    height: auto;
+    overflow:;
+}
 
 
 .table-1 {
@@ -265,7 +270,7 @@ footer {
     .stopText {
         width: 70%;
         display: block;
-        color: #3D345A;
+       
 
     }
 
