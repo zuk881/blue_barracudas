@@ -23,7 +23,7 @@
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a id ='logout'>Login</a></li>
-        <li><a>Saved Searches</a></li>
+        <li><a href="favorites.html">Saved Searches</a></li>
         <li><a>logout</a></li>
       </ul>
     </div>
@@ -35,26 +35,43 @@
   </ul>
 
     <h1 class="center-align" id="lead">Let's Get Paid</h1>
-    <div class="container table-1">
-        <div class="row">
 
+    
+    <div class="container table-1">
+        <h4>Find Your Dream Job...</h4>
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12 center">
+                    <input id="keyword" type="text" class="validate"">
+                    <label for="keyword">Job Title</label>
+                  </div>
+
+                <div class="input-field col s12 center" placeholder="location">
+                  <input id="location" type="text" class="validate">
+                  <label for="location">Job Location</label>
+                </div>
+              </div>
+        
+        <!----<div class="row">
+            <form>
             <div class="col s6">
-                <form>
-                    <div class="form-group">
-                        <label for="keyword">Search Keyword</label>
-                        <input onfocus="this.value=''" type="text" class="form-control" placeholder="search keyword" id="keyword">
-                    </div>
-                    <div class="form-group">
-                        <label for="location">Location</label>
-                        <input onfocus="this.value=''" type="text" name="location" class="form-control" id="location"
-                            placeholder="location">
-                    </div>
-                    <div class="form-group">
-                        <button id="submit" class="btn waves-effect waves-light blue" type="submit" name="action">Submit
-                            <i class="material-icons right">send</i>
-                        </button id="submit">
-                    </div>
-                </form>
+                <div class="form-group">
+                    <label for="keyword">Search Keyword</label>
+                    <input onfocus="this.value=''" type="text" class="form-control" placeholder="Keyword"
+                        id="keyword">
+                </div>
+                <div class="form-group">
+                    <label for="location">Locations</label>
+                    <input onfocus="this.value=''" type="text" name="location" class="form-control" id="Location"
+                        placeholder="location">
+                </div> ----->
+                <div class="form-group center">
+                    <button id="submit" class="btn waves-effect waves-light" style="background-color: #3d345a" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button id="submit">
+                </div>
+
             </div>
             
             <!---- <div class="col s6">
@@ -72,6 +89,7 @@
                     </div>
                 </nav>
             </div>--->
+        </form>
         </div> 
 
     </div>

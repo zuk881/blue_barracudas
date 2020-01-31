@@ -100,6 +100,108 @@ $(document).ready(function () {
             $(".dynamic-modal").hide();
         })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //writing ajax functionality for the github jobs api
 
         var keyword = $("#keyword").val()
@@ -115,6 +217,7 @@ $(document).ready(function () {
             console.log(resultsArr);
 
 
+
             //GitHub Jobs Code
             // create a new div for each job result in the array with a unique id corresponding with the index of the item
             resultsArr.map(function (value, key) {
@@ -125,7 +228,7 @@ $(document).ready(function () {
                 // here i make a var called save button and create an html button using jquery
                 var saveButton = $("<a>").addClass("btn-floating btn-large waves-effect waves-light blue save-button").html('<i class="material-icons">save</i></a></button>')
 
-
+               
 
 
 
@@ -135,6 +238,7 @@ $(document).ready(function () {
                 saveButton.attr("data-title", value.title)
                 saveButton.attr("data-company", value.company)
                 saveButton.attr("data-loc", value.location)
+                
 
                 //now I make another var newsavebutton which creates the data cell 
                 var newSaveButton = $("<td>")
@@ -160,24 +264,7 @@ $(document).ready(function () {
                 // });
 
             })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //Empties the input boxes after the submit button is clicked
+         //Empties the input boxes after the submit button is clicked
             $("#keyword").val(" ")
             $("#location").val(" ")
 
@@ -212,6 +299,9 @@ $(document).ready(function () {
         }
     });
 
+
+
+
     $("#logout").on("click", function () {
         firebase.auth().signOut()
         location.href = "auth.html"
@@ -245,6 +335,7 @@ $(document).ready(function () {
             location: $(this).attr("data-loc"),
             company: $(this).attr("data-company"),
             url: $(this).attr("data-url"),
+            // description: $(this).attr("data-description"),
             userid: userId,
             autoid: autoId
             // savebutton: $(this)
@@ -262,14 +353,10 @@ $(document).ready(function () {
 
 
         if (snapshot.val().userid === userId) {
-
-
             //and store them in new variables            
             var savedTitle = snapshot.val().title
             var savedAutoId = snapshot.val().autoid
-            // console.log(savedAutoId)
-            // console.log(savedTitle)
-            // console.log(snapshot.val().title)
+
             var savedLoc = snapshot.val().location
             // console.log(savedLoc)
             var savedCompany = snapshot.val().company
@@ -282,8 +369,8 @@ $(document).ready(function () {
             eraseButton.attr("data-url", snapshot.val().url)
             eraseButton.attr("data-id", savedAutoId)
             eraseButton.attr("data-userid", snapshot.val().userid)
-            var appliedButton = $("<button>").text("i've applied").addClass("btn btn-primary btn-sm applied-button")
-
+            var appliedButton = $("<a target='_blank'>").addClass("btn-floating btn-large waves-effect waves-light green apply-button").html('<i class="material-icons">local_bar</i></a></button>')
+            appliedButton.attr("href", snapshot.val().url)
 
             var newRow = $("<tr>").append(
                 $("<td>").html(eraseButton),
@@ -291,7 +378,7 @@ $(document).ready(function () {
                 $("<td>").text(savedTitle),
                 $("<td>").text(savedLoc),
                 $("<td>").text(savedCompany),
-                $("<td>").text(savedURL)
+                // $("<td>").text(savedURL)
             )
             $(".job-info-saved").append(newRow);
             // console.log("appended");
@@ -301,13 +388,13 @@ $(document).ready(function () {
             // console.log(newAutoId)
             var removeRef = firebase.database().ref($(this).attr("data-id"))
             e.preventDefault()
-            // console.log("erase")
-            // console.log(snapshot.val())
+
+
             var userId = $(this).attr("data-userid")
             var removeTitle = $(this).attr("data-title")
-            // console.log(userId)
-            // console.log(snapshot.val().userid)
-            // var removeRef = firebase.database().ref('users');
+            console.log(userId)
+            console.log(snapshot.val().userid)
+
             if (snapshot.val().userid === userId && snapshot.val().title === removeTitle) {
                 removeRef.remove()
                     .then(function () {
