@@ -80,6 +80,15 @@ body {
     background-color: lightgray;
 }
 
+.table-1 .row {
+    margin-top: 25px;
+    border-radius: 12px;
+    padding:10px 20% 10px 20%;
+    color: #8F8B81;
+   
+}
+
+
 .table-2 {
     margin-top: 25px;
     border-radius: 12px;
@@ -152,6 +161,8 @@ label {
     font-family: 'Roboto', sans-serif;
 }
 
+
+
 td {
     overflow: auto;
     text-overflow: ellipsis;
@@ -178,6 +189,13 @@ td:hover {
 
 h2 {
     color: white;
+}
+
+h4 {
+    font-size: 300%;
+    font-weight: 100;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;  
 }
 
 .nav-link {
@@ -223,24 +241,40 @@ footer {
     border-radius: 0px;
 }
 
+.input-field label {
+    display: block;
+    color: #EFEEF1;
+    background-color: #3D345A;
+}
+
+.input-field {
+    display: inline-block;
+}
+
 
 
 
 
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (max-width: 600px) {
+    body {
+      
+    }
+  
     
     .stopText {
         width: 70%;
         display: block;
+        color: #3D345A;
 
     }
 
     h1 {
-        font-family: 3em;
+        font-family: 100%;
+    }
+
+    h4 {
+        font-family: 200%; 
     }
 
       
