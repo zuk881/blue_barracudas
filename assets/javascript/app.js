@@ -18,6 +18,18 @@ function handleSearch(e) {
   });
 }
 
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems, options);
+      });
+    
+      // Or with jQuery
+    
+      $(document).ready(function(){
+        $('.sidenav').sidenav();
+      });
+ 
 // Event listener to handle search button clicks
 
 $(document).on("click", "#search", handleSearch);

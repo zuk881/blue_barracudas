@@ -1,13 +1,14 @@
 $(document).ready(function () {
-    console.log("ready")
 
-    var modalArray = ["something is here"];
+
+    // var modalArray = ["something is here"];
+
 
 
     // function to display results after submit button is pressed
     $("#submit").on("click", function (e) {
         e.preventDefault();
-        modalArray = [];
+        // modalArray = [];
 
         // ajax call for USA Jobs
 
@@ -28,7 +29,7 @@ $(document).ready(function () {
                 "Authorization-Key": authKey
             }
         }).then(function (response) {
-            console.log(response);
+
 
             // displays results from the USAJobs board to the page
             var results = response.SearchResult.SearchResultItems;
@@ -36,7 +37,7 @@ $(document).ready(function () {
             // create a new div for each job result in the array with a unique id corresponding with the index of the item
             results.map(function (value, key) {
                 // create new table row
-                console.log("key " + key);
+
                 var newResult = $("<tr>");
                 newResult.addClass("search-result");
                 newResult.attr("id", "result-" + key);
@@ -65,23 +66,26 @@ $(document).ready(function () {
                 var newEmployer = $("<td>").text(value.MatchedObjectDescriptor.OrganizationName);
                 var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
 
-                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal-" + key + "' class='see-more modal-trigger modal-close'> see more </a>");
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal" + key + "' class='modal-trigger'> see more </a>");
+                // $(".modal-trigger").on("click", function () {
 
-                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal1' class='see-more modal-trigger modal-close'> see more </a>");
+                    
+                    // console.log("modal trigger working");
+                    var divContainer = $("<div class='modal' id='modal" + key + "'>");
+                    var divContent = $("<div class='modal-content'>")
+                    var header = $("<h4>").text("Job Description");
+                    header.prependTo(divContent);
+                    var description = $("<p>").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
+                    description.appendTo(divContent);
+                    divContainer.append(divContent);
+                    divContainer.appendTo($(".dynamic-modal"));
 
-                // $(".modal-body").val(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
-                // $('.modal-body').append($("<span class='description-text' id='modal-" + key + "'>").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
-                // // $(".description-text").hide();
-                // $(".see-more").on("click", function (e) {
-                //     e.preventDefault();
+                    var modalFooter = $("<div class='modal-footer'>");
+                    var modalFooterAnchor = $("<a href='#!' class='modal-close waves-effect waves-green btn-flat'>Close</a>");
 
-                //     console.log("click working");
-                //     $(".modal-trigger").modal();
-
-                //     // $(".description-text").hide();
-                //     $("#description-" + key + "").show().val();
-
-                // });
+                    modalFooterAnchor.appendTo(modalFooter);
+                    modalFooter.appendTo(divContainer);
+                // })
 
                 // $('#exampleModalScrollable').modal('show') 
                 // append table data to new row
@@ -90,6 +94,8 @@ $(document).ready(function () {
                 $(".job-info-1").append(newResult);
 
             });
+            $(".modal").modal();
+
         })
 
         $(".dynamic-modal-close-button").on("click", function () {
@@ -249,7 +255,7 @@ $(document).ready(function () {
                 $('#exampleModalScrollable .modal-body').append($("<span class='description-text' id='description-" + key + "'>").html(value.description));
                 $(".description-text").hide();
                 $(document).on("click", ".see-more", function () {
-                    console.log(value.description)
+                    // console.log(value.description)
                     // $(".description-text").hide();
                     $("#description-" + key + "").show().val();
                 })
@@ -287,7 +293,7 @@ $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            console.log(user)
+            // console.log(user)
             userId = firebase.auth().currentUser.uid;
         } else {
             console.log("invalid")
@@ -315,7 +321,7 @@ $(document).ready(function () {
     $(document).on("click", ".save-button", function (e) {
         //the object will be pushed to firebase on that signed in users path
         e.preventDefault();
-        console.log("save")
+        // console.log("save")
         // var savedJob = {
         //     title: $(this).attr("data-title"),
         //     location: $(this).attr("data-loc"),
@@ -342,9 +348,9 @@ $(document).ready(function () {
     // var savedRef = database.ref('users')
 
     rootRef.on("child_added", function (snapshot) {
-        console.log(snapshot.val());
-        console.log("in snapshot")
-        console.log(snapshot.val().autoid)
+        // console.log(snapshot.val());
+        // console.log("in snapshot")
+        // console.log(snapshot.val().autoid)
 
 
 
@@ -352,10 +358,11 @@ $(document).ready(function () {
             //and store them in new variables            
             var savedTitle = snapshot.val().title
             var savedAutoId = snapshot.val().autoid
+
             var savedLoc = snapshot.val().location
-            console.log(savedLoc)
+            // console.log(savedLoc)
             var savedCompany = snapshot.val().company
-            console.log(savedCompany)
+            // console.log(savedCompany)
             var savedURL = snapshot.val().url
             var eraseButton = $("<a>").addClass("btn-floating btn-large waves-effect waves-light red erase-button").html('<i class="material-icons">delete</i></a></button>')
             eraseButton.attr("data-title", snapshot.val().title)
@@ -377,25 +384,27 @@ $(document).ready(function () {
                 // $("<td>").text(savedURL)
             )
             $(".job-info-saved").append(newRow);
-            console.log("appended");
+            // console.log("appended");
         }
         $(document).on("click", ".erase-button", function (e) {
             newAutoId = $(this).attr("data-id")
-            console.log(newAutoId)
+            // console.log(newAutoId)
             var removeRef = firebase.database().ref($(this).attr("data-id"))
             e.preventDefault()
+
 
             var userId = $(this).attr("data-userid")
             var removeTitle = $(this).attr("data-title")
             console.log(userId)
             console.log(snapshot.val().userid)
+
             if (snapshot.val().userid === userId && snapshot.val().title === removeTitle) {
                 removeRef.remove()
                     .then(function () {
-                        console.log("Remove succeeded.")
+                        // console.log("Remove succeeded.")
                     })
                     .catch(function (error) {
-                        console.log("Remove failed: " + error.message)
+                        // console.log("Remove failed: " + error.message)
                     });
             }
 
