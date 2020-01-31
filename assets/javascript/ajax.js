@@ -2,7 +2,7 @@ $(document).ready(function () {
     console.log("ready")
 
     var modalArray = ["something is here"];
-    
+
 
     // function to display results after submit button is pressed
     $("#submit").on("click", function (e) {
@@ -224,7 +224,7 @@ $(document).ready(function () {
                 // here i make a var called save button and create an html button using jquery
                 var saveButton = $("<a>").addClass("btn-floating btn-large waves-effect waves-light blue save-button").html('<i class="material-icons">save</i></a></button>')
 
-               
+
 
 
 
@@ -234,7 +234,7 @@ $(document).ready(function () {
                 saveButton.attr("data-title", value.title)
                 saveButton.attr("data-company", value.company)
                 saveButton.attr("data-loc", value.location)
-                
+
 
                 //now I make another var newsavebutton which creates the data cell 
                 var newSaveButton = $("<td>")
@@ -260,7 +260,7 @@ $(document).ready(function () {
                 // });
 
             })
-         //Empties the input boxes after the submit button is clicked
+            //Empties the input boxes after the submit button is clicked
             $("#keyword").val(" ")
             $("#location").val(" ")
 
@@ -340,7 +340,7 @@ $(document).ready(function () {
     //the saved jobs will then be pulled from firebase to be displayed on the favorites html page
     //use the child added function to take the values from the db
     // var savedRef = database.ref('users')
-    
+
     rootRef.on("child_added", function (snapshot) {
         console.log(snapshot.val());
         console.log("in snapshot")
@@ -364,8 +364,9 @@ $(document).ready(function () {
             eraseButton.attr("data-url", snapshot.val().url)
             eraseButton.attr("data-id", savedAutoId)
             eraseButton.attr("data-userid", snapshot.val().userid)
-            var appliedButton = $("<a target='_blank'>").addClass("btn-floating btn-large waves-effect waves-light green apply-button").html('<i class="material-icons">local_bar</i></a></button>')
+            var appliedButton = $("<a target='_blank'>").addClass("btn-floating btn-large waves-effect waves-light apply-button").html('<i class="material-icons">local_bar</i></a></button>')
             appliedButton.attr("href", snapshot.val().url)
+            // appliedButton.css("color", "#FFEFD5")
 
             var newRow = $("<tr>").append(
                 $("<td>").html(eraseButton),
@@ -399,6 +400,6 @@ $(document).ready(function () {
             }
 
         })
-   
-})
+
+    })
 })
