@@ -17,22 +17,25 @@
 
 <body>
     
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo center">Logo</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a id ='logout'>Login</a></li>
-        <li><a href="favorites.html">Saved Searches</a></li>
-        <li><a>logout</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Login</a></li>
-        <li><a href="sass.html">Saved Searches</a></li>
-  </ul>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+              <a href="index.html" class="brand-logo center" ><img src="https://img.icons8.com/wired/64/000000/money.png"></a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="auth.html"'>Login</a></li>
+                <li><a href="favorites.html">Saved Searches</a></li>
+                <li id ='logout'><a>Logout</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        
+          <ul class="sidenav" id="mobile-demo">
+            <li><a href="auth.html">Login</a></li>
+                <li><a href="favorites.html">Saved Searches</a></li>
+                <li id ='logout'><a>Logout</a></li>
+          </ul>
 
     <h1 class="center-align" id="lead">Let's Get Paid</h1>
 
@@ -67,7 +70,7 @@
                         placeholder="location">
                 </div> ----->
                 <div class="form-group center">
-                    <button id="submit" class="btn waves-effect waves-light" style="background-color: #3d345a" type="submit" name="action">Submit
+                    <button id="submit" class="btn waves-effect waves-light" style="background-color: #809D87" type="submit" name="action">Submit
                         <i class="material-icons right">send</i>
                     </button id="submit">
                 </div>
@@ -214,6 +217,8 @@
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
     <script src="assets/javascript/app.js"></script>
     <script src="assets/javascript/ajax.js"></script>
+    
+            
 
 </body>
 
