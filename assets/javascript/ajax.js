@@ -35,6 +35,7 @@ $(document).ready(function () {
             // create a new div for each job result in the array with a unique id corresponding with the index of the item
             results.map(function (value, key) {
                 // create new table row
+                console.log("key " + key);
                 var newResult = $("<tr>");
                 newResult.addClass("search-result");
                 newResult.attr("id", "result-" + key);
@@ -62,27 +63,41 @@ $(document).ready(function () {
 
                 var newEmployer = $("<td>").text(value.MatchedObjectDescriptor.OrganizationName);
                 var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
-<<<<<<< HEAD
-                
-                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal-" + key + "' class='see-more modal-trigger modal-close'> see more </a>");
-=======
 
-                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal1' class='see-more modal-trigger modal-close'> see more </a>");
->>>>>>> 38f974482de0dacf8dcead57994dbd8f80d01409
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal-" + key + "' class='modal-trigger'> see more </a>");
+
+                $(".modal-trigger").on("click", function (event) {
+                    event.preventDefault();
+                    console.log("modal trigger working");
+                    $(".dynamic-modal").show();
+                    var target = $(this).attr("href");
+                    console.log(target);
+                    var divModalContainer = $("<div>");
+                    var header = $("<h4>").text("Job Description");
+                    header.prependTo(divModalContainer);
+                    var description = $("<p>").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
+                    description.appendTo(divModalContainer);
+
+
+                    divModalContainer.appendTo($(".dynamic-modal-content"));
+                })
+
+
+
 
                 // $(".modal-body").val(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
-                $('.modal-body').append($("<span class='description-text' id='modal-" + key + "'>").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
-                // $(".description-text").hide();
-                $(".see-more").on("click", function (e) {
-                    e.preventDefault();
+                // $('.modal-body').append($("<span class='description-text' id='modal-" + key + "'>").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
+                // // $(".description-text").hide();
+                // $(".see-more").on("click", function (e) {
+                //     e.preventDefault();
 
-                    console.log("click working");
-                    $(".modal-trigger").modal();
+                //     console.log("click working");
+                //     $(".modal-trigger").modal();
 
-                    // $(".description-text").hide();
-                    $("#description-" + key + "").show().val();
+                //     // $(".description-text").hide();
+                //     $("#description-" + key + "").show().val();
 
-                });
+                // });
 
                 // $('#exampleModalScrollable').modal('show') 
                 // append table data to new row
@@ -91,6 +106,10 @@ $(document).ready(function () {
                 $(".job-info-1").append(newResult);
 
             });
+        })
+
+        $(".dynamic-modal-close-button").on("click", function () {
+            $(".dynamic-modal").hide();
         })
 
         //writing ajax functionality for the github jobs api
@@ -145,13 +164,8 @@ $(document).ready(function () {
                 $(".modal-body").val(value.description);
                 $('#exampleModalScrollable .modal-body').append($("<span class='description-text' id='description-" + key + "'>").html(value.description));
                 $(".description-text").hide();
-<<<<<<< HEAD
-                $(document).on("click",".see-more", function () {
-                    // console.log(value.description)
-=======
                 $(document).on("click", ".see-more", function () {
-                    console.log(value.description)
->>>>>>> 38f974482de0dacf8dcead57994dbd8f80d01409
+                    // console.log(value.description)
                     // $(".description-text").hide();
                     $("#description-" + key + "").show().val();
                 })
@@ -232,7 +246,7 @@ $(document).ready(function () {
     firebase.initializeApp(firebaseConfig);
     var database = firebase.database();
     var rootRef = database.ref('users');
-    var userId ;
+    var userId;
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
@@ -243,13 +257,13 @@ $(document).ready(function () {
             // No user is signed in.
         }
     });
-   
+
     $("#logout").on("click", function () {
         firebase.auth().signOut()
         location.href = "auth.html"
 
-    }) 
-    
+    })
+
 
     //write the functionality of the save buttons
     //_______________________________________________
@@ -269,7 +283,7 @@ $(document).ready(function () {
         //     url: $(this).attr("data-url"),
         // savebutton: $(this)
 
-     userId = firebase.auth().currentUser.uid;
+        userId = firebase.auth().currentUser.uid;
         //these are the attributes that were created when the button was made.
         rootRef.push({
             title: $(this).attr("data-title"),

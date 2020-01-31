@@ -11,7 +11,7 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-   
+
     <title>Job Search</title>
 </head>
 
@@ -21,7 +21,7 @@
     <p id="logout">logout</p>
     <div class="container table-1">
         <div class="row">
-            
+
             <div class="col s6">
                 <div class="form-group">
                     <label for="keyword">Search Keyword</label>
@@ -39,7 +39,7 @@
                     </button id="submit">
                 </div>
             </div>
-            
+
             <div class="col s6">
                 <nav>
                     <div class="nav-wrapper">
@@ -154,31 +154,35 @@
 
     </div> -->
 
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Job Description</h4>
-            <p class="modal-body"></p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-    </div>
+
 
 
     </div><br><br><br>
 
     <footer>
         &#169; Copyright Blue Barracudas
-        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
     </footer>
+
+    <!-- Modal Structure -->
+    <div class="dynamic-modal">
+        <div class="dynamic-modal-close">
+            <button class="dynamic-modal-close-button">X</button>
+
+        </div>
+        <div class="dynamic-modal-content">
+
+        </div>
+    </div>
 
     <!-- Compiled and minified JavaScript -->
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
 
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
