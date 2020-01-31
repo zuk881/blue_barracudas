@@ -90,6 +90,17 @@ $(document).ready(function () {
             });
         })
 
+        // Muse Job Search API call
+
+        $.ajax({
+            url: "https://www.themuse.com/api/public/jobs?page=1&location=" + place,
+            method: "GET"
+        }).then(function(response) {
+            // console.log("MUSE RESPONSE" + response);
+        });
+
+        // End Muse Job Search API call
+        
         //writing ajax functionality for the github jobs api
 
         var keyword = $("#keyword").val()
