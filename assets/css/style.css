@@ -210,6 +210,10 @@ margin: 5px;
 }
 
 
+.modal-body {
+    color: black;
+} 
+
 nav {
     background-color: lightgray;
     border-radius: 10px;
