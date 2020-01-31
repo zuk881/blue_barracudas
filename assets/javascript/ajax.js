@@ -1,11 +1,13 @@
 $(document).ready(function () {
-
+    // $("#t1").hide();
+    // $("#t2").hide();
     // var modalArray = ["something is here"];
 
 
     // function to display results after submit button is pressed
     $("#submit").on("click", function (e) {
         e.preventDefault();
+        // $("job-info-1").empty();
         // modalArray = [];
 
         // ajax call for USA Jobs
@@ -27,7 +29,7 @@ $(document).ready(function () {
                 "Authorization-Key": authKey
             }
         }).then(function (response) {
-
+           
 
             // displays results from the USAJobs board to the page
             var results = response.SearchResult.SearchResultItems;
@@ -213,6 +215,8 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
+            // $("#t2").show();
+
             var resultsArr = response;
             console.log(resultsArr);
 
