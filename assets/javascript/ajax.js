@@ -351,7 +351,7 @@ $(document).ready(function () {
         if (snapshot.val().userid === userId) {
             //and store them in new variables            
             var savedTitle = snapshot.val().title
-            var savedAutoId = snapshot.val().autoi
+            var savedAutoId = snapshot.val().autoid
             var savedLoc = snapshot.val().location
             console.log(savedLoc)
             var savedCompany = snapshot.val().company
@@ -373,7 +373,7 @@ $(document).ready(function () {
                 $("<td>").text(savedTitle),
                 $("<td>").text(savedLoc),
                 $("<td>").text(savedCompany),
-                $("<td>").text(savedURL)
+                // $("<td>").text(savedURL)
             )
             $(".job-info-saved").append(newRow);
             console.log("appended");
@@ -383,13 +383,11 @@ $(document).ready(function () {
             console.log(newAutoId)
             var removeRef = firebase.database().ref($(this).attr("data-id"))
             e.preventDefault()
-            console.log("erase")
-            console.log(snapshot.val())
+
             var userId = $(this).attr("data-userid")
             var removeTitle = $(this).attr("data-title")
             console.log(userId)
             console.log(snapshot.val().userid)
-            // var removeRef = firebase.database().ref('users');
             if (snapshot.val().userid === userId && snapshot.val().title === removeTitle) {
                 removeRef.remove()
                     .then(function () {
