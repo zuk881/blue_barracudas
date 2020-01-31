@@ -1,11 +1,13 @@
 $(document).ready(function () {
     console.log("ready")
 
+    var modalArray = ["something is here"];
+    
+
     // function to display results after submit button is pressed
     $("#submit").on("click", function (e) {
         e.preventDefault();
-
-        console.log("submit button working")
+        modalArray = [];
 
         // ajax call for USA Jobs
 
@@ -27,7 +29,6 @@ $(document).ready(function () {
             }
         }).then(function (response) {
             console.log(response);
-
 
             // displays results from the USAJobs board to the page
             var results = response.SearchResult.SearchResultItems;
@@ -65,6 +66,12 @@ $(document).ready(function () {
                 var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
 
                 var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal-" + key + "' class='modal-trigger'> see more </a>");
+
+
+                console.log("job" + value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
+                // modalJobDescription.push(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
+
+
 
                 $(".modal-trigger").on("click", function (event) {
                     event.preventDefault();
@@ -174,7 +181,6 @@ $(document).ready(function () {
                 // append new row to the appropriate table body
                 $(".job-info-2").append(newResult);
                 // });
-
 
             })
 

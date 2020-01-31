@@ -209,16 +209,3 @@ footer {
     z-index: 1000;
 }
 
-/* MODAL */
-.dynamic-modal {
-    position: fixed;
-    width: 400px;
-    min-height: 200px;
-    background: grey;
-    border: 1px solid black;
-    z-index: 2000;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
-}
