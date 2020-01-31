@@ -1,11 +1,13 @@
 $(document).ready(function () {
     console.log("ready")
 
+    var modalArray = ["something is here"];
+    
+
     // function to display results after submit button is pressed
     $("#submit").on("click", function (e) {
         e.preventDefault();
-
-        console.log("submit button working")
+        modalArray = [];
 
         // ajax call for USA Jobs
 
@@ -28,13 +30,13 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log(response);
 
-
             // displays results from the USAJobs board to the page
             var results = response.SearchResult.SearchResultItems;
 
             // create a new div for each job result in the array with a unique id corresponding with the index of the item
             results.map(function (value, key) {
                 // create new table row
+                console.log("key " + key);
                 var newResult = $("<tr>");
                 newResult.addClass("search-result");
                 newResult.attr("id", "result-" + key);
@@ -68,18 +70,18 @@ $(document).ready(function () {
                 var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal1' class='see-more modal-trigger modal-close'> see more </a>");
 
                 // $(".modal-body").val(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
-                $('.modal-body').append($("<span class='description-text' id='modal-" + key + "'>").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
-                // $(".description-text").hide();
-                $(".see-more").on("click", function (e) {
-                    e.preventDefault();
+                // $('.modal-body').append($("<span class='description-text' id='modal-" + key + "'>").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
+                // // $(".description-text").hide();
+                // $(".see-more").on("click", function (e) {
+                //     e.preventDefault();
 
-                    console.log("click working");
-                    $(".modal-trigger").modal();
+                //     console.log("click working");
+                //     $(".modal-trigger").modal();
 
-                    // $(".description-text").hide();
-                    $("#description-" + key + "").show().val();
+                //     // $(".description-text").hide();
+                //     $("#description-" + key + "").show().val();
 
-                });
+                // });
 
                 // $('#exampleModalScrollable').modal('show') 
                 // append table data to new row
@@ -88,6 +90,10 @@ $(document).ready(function () {
                 $(".job-info-1").append(newResult);
 
             });
+        })
+
+        $(".dynamic-modal-close-button").on("click", function () {
+            $(".dynamic-modal").hide();
         })
 
         //writing ajax functionality for the github jobs api
@@ -148,7 +154,6 @@ $(document).ready(function () {
                 // append new row to the appropriate table body
                 $(".job-info-2").append(newResult);
                 // });
-
 
             })
 
