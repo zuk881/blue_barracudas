@@ -16,38 +16,63 @@
 </head>
 
 <body>
+    
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo center">Logo</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a id ='logout'>Login</a></li>
+        <li><a>Saved Searches</a></li>
+        <li><a>logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="sass.html">Login</a></li>
+        <li><a href="sass.html">Saved Searches</a></li>
+  </ul>
 
     <h1 class="center-align" id="lead">Let's Get Paid</h1>
-    <p id="logout">logout</p>
     <div class="container table-1">
         <div class="row">
 
             <div class="col s6">
-                <div class="form-group">
-                    <label for="keyword">Search Keyword</label>
-                    <input onfocus="this.value=''" type="text" class="form-control" placeholder="search keyword"
-                        id="keyword">
-                </div>
-                <div class="form-group">
-                    <label for="location">Location</label>
-                    <input onfocus="this.value=''" type="text" name="location" class="form-control" id="location"
-                        placeholder="location">
-                </div>
-                <div class="form-group">
-                    <button id="submit" class="btn waves-effect waves-light blue" type="submit" name="action">Submit
-                        <i class="material-icons right">send</i>
-                    </button id="submit">
-                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="keyword">Search Keyword</label>
+                        <input onfocus="this.value=''" type="text" class="form-control" placeholder="search keyword" id="keyword">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input onfocus="this.value=''" type="text" name="location" class="form-control" id="location"
+                            placeholder="location">
+                    </div>
+                    <div class="form-group">
+                        <button id="submit" class="btn waves-effect waves-light blue" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button id="submit">
+                    </div>
+                </form>
             </div>
-
-            <div class="col s6">
+            
+            <!---- <div class="col s6">
                 <nav>
                     <div class="nav-wrapper">
-                        <a href="favorites.html" class="brand-logo center">Saved Jobs</a>
+                       <a href="favorites.html" class="brand-logo center">Saved Jobs</a> 
                     </div>
                 </nav>
-            </div>
-        </div>
+            </div>--->
+
+          <!----  <div class="col s6" >
+                <nav>
+                    <div class="nav-wrapper" id="googleButton">
+                        <a href="favorites.html" class="brand-logo center" id="googleLogin">Log in with google</a>
+                    </div>
+                </nav>
+            </div>--->
+        </div> 
 
     </div>
 
@@ -135,7 +160,7 @@
     <!-- Modal -->
 
     <!-- Modal Structure -->
-    <div class="dynamic-modal">
+    <!-- <div class="dynamic-modal">
         <div class="dynamic-modal-close">
             <button class="dynamic-modal-close-button">X</button>
 
@@ -143,7 +168,7 @@
         <div class="dynamic-modal-content">
 
         </div>
-    </div>
+    </div> -->
 
 
 

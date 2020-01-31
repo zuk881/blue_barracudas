@@ -12,7 +12,7 @@ body {
  
 
 #lead {
-    font-size: 90px;
+    font-size: 6em;
     /* font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial; */
     font-family: 'Roboto', sans-serif;
     padding: 12px;
@@ -29,7 +29,7 @@ body {
 }
 
 #sub {
-    font-size: 90px;
+    font-size: 2em;
     /* font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial; */
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
@@ -207,5 +207,39 @@ nav {
 
 footer {
     z-index: 1000;
+}
+
+.nav-wrapper a {
+    background-color: #EFEEF1; 
+    color: #8F8B81;
+}
+
+.nav-wrapper {
+    background-color: #EFEEF1;
+    border-radius: 0px;
+}
+
+
+
+
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    
+    .stopText {
+        width: 70%;
+        display: block;
+
+    }
+
+    h1 {
+        font-family: 3em;
+    }
+
+      
+
 }
 

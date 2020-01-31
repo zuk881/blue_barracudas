@@ -65,32 +65,9 @@ $(document).ready(function () {
                 var newEmployer = $("<td>").text(value.MatchedObjectDescriptor.OrganizationName);
                 var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
 
-                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal-" + key + "' class='modal-trigger'> see more </a>");
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal-" + key + "' class='see-more modal-trigger modal-close'> see more </a>");
 
-
-                console.log("job" + value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
-                // modalJobDescription.push(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
-
-
-
-                $(".modal-trigger").on("click", function (event) {
-                    event.preventDefault();
-                    console.log("modal trigger working");
-                    $(".dynamic-modal").show();
-                    var target = $(this).attr("href");
-                    console.log(target);
-                    var divModalContainer = $("<div>");
-                    var header = $("<h4>").text("Job Description");
-                    header.prependTo(divModalContainer);
-                    var description = $("<p>").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
-                    description.appendTo(divModalContainer);
-
-
-                    divModalContainer.appendTo($(".dynamic-modal-content"));
-                })
-
-
-
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal1' class='see-more modal-trigger modal-close'> see more </a>");
 
                 // $(".modal-body").val(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
                 // $('.modal-body').append($("<span class='description-text' id='modal-" + key + "'>").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary));
@@ -143,22 +120,18 @@ $(document).ready(function () {
                 newResult.attr("id", "result-" + key);
                 // here i make a var called save button and create an html button using jquery
                 var saveButton = $("<a>").addClass("btn-floating btn-large waves-effect waves-light blue save-button").html('<i class="material-icons">save</i></a></button>')
-                // var saveButton = $("<button>");
-                //add the text to the button
 
-                // saveButton.text("Save");
-                //add bootstrap classes to this button and a save-button class for click functionality
 
-                // saveButton.text("Save")
-                //add bootstrap classes to this button and a save-button class for click functionality
-                // saveButton.addClass("btn btn-primary btn-sm save-button")
+
+
+
 
                 //here I add the attributes for the values that I will need to push to the database in the click function
                 saveButton.attr("data-url", value.url)
                 saveButton.attr("data-title", value.title)
                 saveButton.attr("data-company", value.company)
                 saveButton.attr("data-loc", value.location)
-                //i need to make an erase button here, so that i can save it's details in the database as well
+
                 //now I make another var newsavebutton which creates the data cell 
                 var newSaveButton = $("<td>")
                 //that I append the actual button to
@@ -172,7 +145,7 @@ $(document).ready(function () {
                 $('#exampleModalScrollable .modal-body').append($("<span class='description-text' id='description-" + key + "'>").html(value.description));
                 $(".description-text").hide();
                 $(document).on("click", ".see-more", function () {
-                    // console.log(value.description)
+                    console.log(value.description)
                     // $(".description-text").hide();
                     $("#description-" + key + "").show().val();
                 })
@@ -197,37 +170,7 @@ $(document).ready(function () {
 
 
 
-            // //ajax for indeed api
-            // var keywordIndeed = $("#keyword").val()
-            // var loc= $("#location").val()
-            // var settings = {
-            // 	"async": true,
-            // 	"crossDomain": true,
-            // 	"url": "https://indeed-indeed.p.rapidapi.com/apigetjobs?v=2&format=json",
-            // 	"method": "GET",
-            // 	"headers": {
-            // 		"x-rapidapi-host": "indeed-indeed.p.rapidapi.com",
-            // 		"x-rapidapi-key": "6a24900b4dmsh49b37a3833d9488p16a5cfjsnf50ec338300e"
-            // 	}
-            // }
 
-            // $.ajax(settings).done(function (response) {
-            // 	console.log(response);
-            // });
-
-
-            //writing ajax for reed api
-            // var keywordReed = "web"
-            // var locationReed = "london"
-            // var queryURLreed = "https://www.reed.co.uk/api/search?keywords="+keywordReed+"&locationName="+locationReed
-
-            // $.ajax ({
-            //     url: queryURLreed,
-            //     method: "GET"
-            // }).then(function(response){
-            //     var results = response
-            //     console.log(results)
-            // })
 
 
             //Empties the input boxes after the submit button is clicked
@@ -251,8 +194,9 @@ $(document).ready(function () {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     var database = firebase.database();
-    var rootRef = database.ref('users');
+    var rootRef = database.ref();
     var userId;
+    var autoId;
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
@@ -290,22 +234,27 @@ $(document).ready(function () {
         // savebutton: $(this)
 
         userId = firebase.auth().currentUser.uid;
+        var autoId = rootRef.push().key
         //these are the attributes that were created when the button was made.
-        rootRef.push({
+        rootRef.child(autoId).set({
             title: $(this).attr("data-title"),
             location: $(this).attr("data-loc"),
             company: $(this).attr("data-company"),
             url: $(this).attr("data-url"),
-            userid: userId
+            userid: userId,
+            autoid: autoId
             // savebutton: $(this)
-        })
+        }).then(console.log(autoId))
     })
     //the saved jobs will then be pulled from firebase to be displayed on the favorites html page
     //use the child added function to take the values from the db
     // var savedRef = database.ref('users')
+    
     rootRef.on("child_added", function (snapshot) {
         console.log(snapshot.val());
         console.log("in snapshot")
+        console.log(snapshot.val().autoid)
+
 
 
         if (snapshot.val().userid === userId) {
@@ -313,6 +262,8 @@ $(document).ready(function () {
 
             //and store them in new variables            
             var savedTitle = snapshot.val().title
+            var savedAutoId = snapshot.val().autoid
+            console.log(savedAutoId)
             console.log(savedTitle)
             console.log(snapshot.val().title)
             var savedLoc = snapshot.val().location
@@ -325,6 +276,8 @@ $(document).ready(function () {
             eraseButton.attr("data-company", snapshot.val().company)
             eraseButton.attr("data-loc", snapshot.val().location)
             eraseButton.attr("data-url", snapshot.val().url)
+            eraseButton.attr("data-id", savedAutoId)
+            eraseButton.attr("data-userid", snapshot.val().userid)
             var appliedButton = $("<button>").text("i've applied").addClass("btn btn-primary btn-sm applied-button")
 
 
@@ -339,24 +292,29 @@ $(document).ready(function () {
             $(".job-info-saved").append(newRow);
             console.log("appended");
         }
-    })
+        $(document).on("click", ".erase-button", function (e) {
+            newAutoId = $(this).attr("data-id")
+            console.log(newAutoId)
+            var removeRef = firebase.database().ref($(this).attr("data-id"))
+            e.preventDefault()
+            console.log("erase")
+            console.log(snapshot.val())
+            var userId = $(this).attr("data-userid")
+            var removeTitle = $(this).attr("data-title")
+            console.log(userId)
+            console.log(snapshot.val().userid)
+            // var removeRef = firebase.database().ref('users');
+            if (snapshot.val().userid === userId && snapshot.val().title === removeTitle) {
+                removeRef.remove()
+                    .then(function () {
+                        console.log("Remove succeeded.")
+                    })
+                    .catch(function (error) {
+                        console.log("Remove failed: " + error.message)
+                    });
+            }
 
-
-
-
-    //give functionality to the new buttons in the saved jobs table
-    //the erase button will remove the saved job from firebase and from the table at the same time
-    $(document).on("click", ".erase-button", function () {
-        console.log("erase")
-        var removeRef = firebase.database().ref();
-        removeRef.remove()
-            .then(function () {
-                console.log("Remove succeeded.")
-            })
-            .catch(function (error) {
-                console.log("Remove failed: " + error.message)
-            });
-    })
-
-    //the applied for button will move the job to the other table for applied for jobs
+        })
+   
+})
 })
