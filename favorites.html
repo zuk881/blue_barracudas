@@ -15,21 +15,29 @@
 </head>
 
 <body>
-
-    <div class="container table-5">
-        <div class="row">
-            <div class="col s4"></div>
-            <div class="col s4">
-                <nav>
-                    <div class="nav-wrapper">
-                        <a href="index.html" class="brand-logo center">Job Search</a>
-                    </div>
-                </nav>
-            </div>
-            <div class="col s4"></div>
+    <div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+          <a href="index.html" class="brand-logo center" ><img src="https://img.icons8.com/wired/64/000000/money.png"></a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="auth.html"'>Login</a></li>
+            <li><a href="favorites.html">Saved Searches</a></li>
+            <li id ='logout'><a>Logout</a></li>
+          </ul>
         </div>
+      </nav>
     </div>
     
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="auth.html">Login</a></li>
+            <li><a href="favorites.html">Saved Searches</a></li>
+            <li id ='logout'><a>Logout</a></li>
+      </ul>
+    
+    
+
+   
     <h1 class="center-align favorite">Saved Job Searches</h1>
 
     <div class="container table-1">
