@@ -165,37 +165,7 @@ $(document).ready(function () {
 
 
 
-            // //ajax for indeed api
-            // var keywordIndeed = $("#keyword").val()
-            // var loc= $("#location").val()
-            // var settings = {
-            // 	"async": true,
-            // 	"crossDomain": true,
-            // 	"url": "https://indeed-indeed.p.rapidapi.com/apigetjobs?v=2&format=json",
-            // 	"method": "GET",
-            // 	"headers": {
-            // 		"x-rapidapi-host": "indeed-indeed.p.rapidapi.com",
-            // 		"x-rapidapi-key": "6a24900b4dmsh49b37a3833d9488p16a5cfjsnf50ec338300e"
-            // 	}
-            // }
 
-            // $.ajax(settings).done(function (response) {
-            // 	console.log(response);
-            // });
-
-
-            //writing ajax for reed api
-            // var keywordReed = "web"
-            // var locationReed = "london"
-            // var queryURLreed = "https://www.reed.co.uk/api/search?keywords="+keywordReed+"&locationName="+locationReed
-
-            // $.ajax ({
-            //     url: queryURLreed,
-            //     method: "GET"
-            // }).then(function(response){
-            //     var results = response
-            //     console.log(results)
-            // })
 
 
             //Empties the input boxes after the submit button is clicked
@@ -261,11 +231,6 @@ $(document).ready(function () {
         userId = firebase.auth().currentUser.uid;
         var autoId = rootRef.push().key
         //these are the attributes that were created when the button was made.
-
-
-
-
-
         rootRef.child(autoId).set({
             title: $(this).attr("data-title"),
             location: $(this).attr("data-loc"),
@@ -275,17 +240,16 @@ $(document).ready(function () {
             autoid: autoId
             // savebutton: $(this)
         }).then(console.log(autoId))
-    
-       
     })
     //the saved jobs will then be pulled from firebase to be displayed on the favorites html page
     //use the child added function to take the values from the db
     // var savedRef = database.ref('users')
+    
     rootRef.on("child_added", function (snapshot) {
         console.log(snapshot.val());
         console.log("in snapshot")
         console.log(snapshot.val().autoid)
-      
+
 
 
         if (snapshot.val().userid === userId) {
@@ -346,36 +310,6 @@ $(document).ready(function () {
             }
 
         })
-    })
-
-
-
-
-    //give functionality to the new buttons in the saved jobs table
-    //the erase button will remove the saved job from firebase and from the table at the same time
-    // rootRef.on("value", function (snapshot) {
-    //     console.log(snapshot.val())
-    //     $(document).on("click", ".erase-button", function (e) {
-    //         e.preventDefault()
-    //         console.log("erase")
-    //         console.log(snapshot.val())
-    //         var userId = $(this).attr("data-userid")
-    //         var removeTitle = $(this).attr("data-title")
-    //         console.log(userId)
-    //         console.log(snapshot.val().userid)
-    //         // var removeRef = firebase.database().ref('users');
-    //         if (snapshot.val().userid === userId && snapshot.val().title === removeTitle) {
-    //             rootRef.remove()
-    //                 .then(function () {
-    //                     console.log("Remove succeeded.")
-    //                 })
-    //                 .catch(function (error) {
-    //                     console.log("Remove failed: " + error.message)
-    //                 });
-    //         }
-
-    //     })
-    // })
-
+   
 })
-
+})
