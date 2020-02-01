@@ -1,9 +1,4 @@
 $(document).ready(function () {
-    // $("#t1").hide();
-    // $("#t2").hide();
-
-
-
     // hide tables unless if statement is met
     $("#t1").hide();
     $("#t2").hide();
@@ -12,12 +7,8 @@ $(document).ready(function () {
     // function to display results after submit button is pressed
     $("#submit").on("click", function (e) {
         e.preventDefault();
-        // $("job-info-1").empty();
 
         // ajax call for USA Jobs
-
-        // var host = "data.usajobs.gov";
-        // var userAgent = "rasipes@gmail.com";
         var authKey = "1+O9aAwfO+XgebPVfqXfSkKAL3bb7wv4QItq/LRvqlA=";
         var topic = $("#keyword").val();
         var place = $("#location").val();
@@ -182,24 +173,12 @@ $(document).ready(function () {
 
                 modalFooterAnchor.appendTo(modalFooter);
                 modalFooter.appendTo(divContainer);
-                // })
 
-
-                // $(".modal-body").val(strip(value.description));
-                // $('#exampleModalScrollable .modal-body').append($("<span class='description-text' id='description-" + key + "'>").html(strip(value.description)));
-                // $(".description-text").hide();
-                // $(document).on("click", ".see-more", function () {
-                // console.log(value.description)
-                // $(".description-text").hide();
-                // $("#description-" + key + "").show().val();
-
-
-                console.log(newJobDescription);
+         
                 // append table data to new row
                 newResult.append(newSaveButton).append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
                 // append new row to the appropriate table body
                 $(".job-info-2").append(newResult);
-                // });
 
             })
             //Empties the input boxes after the submit button is clicked
@@ -234,6 +213,10 @@ $(document).ready(function () {
             // console.log(user)
             userId = firebase.auth().currentUser.uid;
         } else {
+            $(".favorites-table").hide();
+            signInMessage = $("<p>").addClass("center-align").text("Please sign in to use the saved jobs feature.");
+            signInMessage.appendTo($(".favorites-header"));
+            // DON'T DELETE THIS CONSOLE LOG
             console.log("invalid")
             // No user is signed in.
         }
