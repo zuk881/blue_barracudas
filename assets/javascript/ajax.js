@@ -37,6 +37,8 @@ $(document).ready(function () {
             if (Array.length > 0) {
                 $("#t1").show();
             }
+
+
             // displays results from the USAJobs board to the page
             var results = response.SearchResult.SearchResultItems;
 
