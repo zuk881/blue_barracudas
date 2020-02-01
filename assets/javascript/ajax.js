@@ -409,10 +409,8 @@ $(document).ready(function () {
         var userId = $(this).attr("data-userid")
         var removeTitle = $(this).attr("data-title")
         
-        if (snapshot.val().autoId === newAutoId) {
             var removeRef = firebase.database().ref($(this).attr("data-id"))
-            console.log(userId)
-            console.log(snapshot.val().userid)
+            
             removeRef.remove()
                 // .then(function () {
                     location.reload();
@@ -422,7 +420,7 @@ $(document).ready(function () {
                 // .catch(function (error) {
                     // console.log("Remove failed: " + error.message)
                 // });
-        }
+        
 
     })
 })
