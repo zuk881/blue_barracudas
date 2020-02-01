@@ -13,41 +13,38 @@ $(document).ready(function () {
         var topic = $("#keyword").val();
         var place = $("#location").val();
 
+        //API key for USA Jobs
         var queryURL = "https://data.usajobs.gov/api/search?Keyword=" + topic + "&Location=" + place;
 
+        //Ajax call
         $.ajax({
             url: queryURL,
             method: "GET",
             headers: {
-                // "Host": host,
-                // "User-Agent": userAgent,
                 "Authorization-Key": authKey
             }
+            //code that runs after ajax call
         }).then(function (response) {
-
+            //display the USA Jobs table
             if (Array.length > 0) {
                 $("#t1").show();
             }
 
-
-            // displays results from the USAJobs board to the page
+            // variable to shorten the object path to the data we want to access
             var results = response.SearchResult.SearchResultItems;
 
-            // create a new div for each job result in the array with a unique id corresponding with the index of the item
+            //map function that displays results to the table
             results.map(function (value, key) {
-                // create new table row
 
+                // create new table row
                 var newResult = $("<tr>");
                 newResult.addClass("search-result");
                 newResult.attr("id", "result-" + key);
 
-                // create new button
+                // creates a new button for saving job
                 var saveButton = $("<a>").addClass("btn-floating btn-large waves-effect waves-light blue save-button").html('<i class="material-icons">save</i></a></button>')
-                // add text to button
-                // saveButton.text("Save")
-                //add bootstrap to button
 
-                // add value to button 
+                // add value to save button 
                 saveButton.attr("data-url", value.MatchedObjectDescriptor.ApplyURI[0])
                 saveButton.attr("data-title", value.MatchedObjectDescriptor.PositionTitle)
                 saveButton.attr("data-company", value.MatchedObjectDescriptor.OrganizationName)
@@ -55,21 +52,18 @@ $(document).ready(function () {
 
                 // create table cell
                 var newSaveButton = $("<td>");
+
                 // append button to the cell
                 newSaveButton.append(saveButton);
 
-                // add table data
-                // console.log(value);
+                // add table data for job title, employer, location and description
                 var newJobTitle = $("<td>").html("<a href='" + value.MatchedObjectDescriptor.ApplyURI[0] + "' target='_blank'>" + value.MatchedObjectDescriptor.PositionTitle + "</a>")
-
                 var newEmployer = $("<td>").text(value.MatchedObjectDescriptor.OrganizationName);
                 var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
-
+                // add anchor tag to initialize the modal to the job description
                 var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal" + key + "' class='modal-trigger'> see more </a>");
-                // $(".modal-trigger").on("click", function () {
-
-
-                // console.log("modal trigger working");
+            
+                // dynamically create modal
                 var divContainer = $("<div class='modal' id='modal" + key + "'>");
                 var divContent = $("<div class='modal-content'>")
                 var header = $("<h4>").text("Job Description");
