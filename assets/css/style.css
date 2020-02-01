@@ -75,6 +75,14 @@ img {
     overflow:;
 }
 
+.table-0 {
+    margin-top: 25px;
+    border-radius: 12px;
+    padding:10px 0px 10px 0px;
+    padding: 15px;
+    color: #8F8B81;
+    background-color: lightgray;
+}
 
 .table-1 {
     margin-top: 25px;
@@ -85,7 +93,7 @@ img {
     background-color: lightgray;
 }
 
-.table-1 .row {
+.table-0 .row {
     margin-top: 25px;
     border-radius: 12px;
     padding:10px 20% 10px 20%;
@@ -166,18 +174,6 @@ label {
     font-family: 'Roboto', sans-serif;
 }
 
-
-
-td {
-    overflow: auto;
-    text-overflow: ellipsis;
-    max-height: 1em;
-}
-
-td:hover {
-    overflow: visible;
-  }
-
 .favorite {
     font-size: 60px;
     color: red;
@@ -229,7 +225,8 @@ nav {
 }
 
 .container {
-    background-color: #EFEEF1; 
+    background-color: #EFEEF1;
+    clear: both; 
 }
 
 footer {
@@ -260,17 +257,18 @@ div.modal-content {
     color: black
 }
 
+.overflow-auto {
+   -moz-text-size-adjust: 
+}
 
-
-
-/* Portrait and Landscape */
 @media only screen and (max-width: 720px) {
     .container {
+        clear: both;
         width: 100vw;
         margin: 20px 12px 20px 12px;
         padding: 10px;
     }
-  
+   
    
     h1 {
         font-family: 100%;
