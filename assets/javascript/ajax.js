@@ -410,7 +410,7 @@ $(document).ready(function () {
             if (snapshot.val().userid === userId && snapshot.val().title === removeTitle) {
                 removeRef.remove()
                     .then(function () {
-                        location.reload();
+                        // location.reload();
                         // console.log("Remove succeeded.")
                     })
                     .catch(function (error) {
