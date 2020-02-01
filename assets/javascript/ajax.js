@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    // $("#t1").hide();
+    // $("#t2").hide();
+
 
 
     // hide tables unless if statement is met
@@ -9,7 +12,7 @@ $(document).ready(function () {
     // function to display results after submit button is pressed
     $("#submit").on("click", function (e) {
         e.preventDefault();
-        // modalArray = [];
+        // $("job-info-1").empty();
 
         // ajax call for USA Jobs
 
@@ -30,12 +33,10 @@ $(document).ready(function () {
                 "Authorization-Key": authKey
             }
         }).then(function (response) {
-
-            // if statement to show tables if search produces results   
+           
             if (Array.length > 0) {
                 $("#t1").show();
             }
-
             // displays results from the USAJobs board to the page
             var results = response.SearchResult.SearchResultItems;
 
@@ -92,7 +93,6 @@ $(document).ready(function () {
                 modalFooter.appendTo(divContainer);
                 // })
 
-                // $('#exampleModalScrollable').modal('show') 
                 // append table data to new row
                 newResult.append(newSaveButton).append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
                 // append new row to table body
@@ -220,6 +220,8 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
+            // $("#t2").show();
+
             var resultsArr = response;
             console.log(resultsArr);
 
@@ -408,6 +410,7 @@ $(document).ready(function () {
             if (snapshot.val().userid === userId && snapshot.val().title === removeTitle) {
                 removeRef.remove()
                     .then(function () {
+                        location.reload();
                         // console.log("Remove succeeded.")
                     })
                     .catch(function (error) {
