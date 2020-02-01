@@ -311,11 +311,11 @@ $(document).ready(function () {
             // appliedButton.css("color", "#FFEFD5")
 
             var newRow = $("<tr>").append(
-                $("<td>").html(eraseButton),
-                $("<td>").html(appliedButton),
                 $("<td>").text(savedTitle),
                 $("<td>").text(savedLoc),
                 $("<td>").text(savedCompany),
+                $("<td>").html(appliedButton),
+                $("<td>").html(eraseButton)
                 // $("<td>").text(savedURL)
             )
             $(".job-info-saved").append(newRow);
