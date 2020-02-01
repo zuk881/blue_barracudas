@@ -221,10 +221,12 @@ $(document).ready(function () {
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+    //firebase references and global variables
     var database = firebase.database();
     var rootRef = database.ref();
     var userId;
     var autoId;
+    //firebase function to check if the user is authenticated
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
@@ -238,7 +240,7 @@ $(document).ready(function () {
 
 
 
-
+//logout function for auth user
     $("#logout").on("click", function () {
         firebase.auth().signOut()
         location.href = "auth.html"
@@ -249,20 +251,13 @@ $(document).ready(function () {
     //write the functionality of the save buttons
     //_______________________________________________
     //document click function that will allow the user to click
-
     //on the dynamically generated save buttons from the api calls that display in the save
     //column of the table rows
     //when the user clicks the save button
     $(document).on("click", ".save-button", function (e) {
         //the object will be pushed to firebase on that signed in users path
         e.preventDefault();
-        // console.log("save")
-        // var savedJob = {
-        //     title: $(this).attr("data-title"),
-        //     location: $(this).attr("data-loc"),
-        //     company: $(this).attr("data-company"),
-        //     url: $(this).attr("data-url"),
-        // savebutton: $(this)
+
 
         userId = firebase.auth().currentUser.uid;
         var autoId = rootRef.push().key
@@ -340,8 +335,7 @@ $(document).ready(function () {
             removeRef.remove()
                 // .then(function () {
                     location.reload();
-           
-                    // console.log("Remove succeeded.")
+                    
                 // })
                 // .catch(function (error) {
                     // console.log("Remove failed: " + error.message)
