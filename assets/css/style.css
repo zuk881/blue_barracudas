@@ -296,6 +296,14 @@ table {
     }
 
       
-
-}
+    @media screen and (max-width: 640px) {
+        tr {
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 3px 3px gray;
+            border-radius: 3px;
+            padding: 1em;
+            margin: 1em;
+       }
+    }
 
