@@ -398,20 +398,20 @@ $(document).ready(function () {
         $(document).on("click", ".erase-button", function (e) {
             newAutoId = $(this).attr("data-id")
             // console.log(newAutoId)
-            var removeRef = firebase.database().ref($(this).attr("data-id"))
+        
             e.preventDefault()
-
 
             var userId = $(this).attr("data-userid")
             var removeTitle = $(this).attr("data-title")
-            console.log(userId)
-            console.log(snapshot.val().userid)
-
-            if (snapshot.val().userid === userId && snapshot.val().title === removeTitle) {
+    
+            if (snapshot.val().userid === userId && snapshot.val().autoId === newAutoId) {
+                var removeRef = firebase.database().ref($(this).attr("data-id"))
+                console.log(userId)
+                console.log(snapshot.val().userid)
                 removeRef.remove()
                     // .then(function () {
                         location.reload();
-                        // alert ("it's working");
+               
                         // console.log("Remove succeeded.")
                     // })
                     // .catch(function (error) {
