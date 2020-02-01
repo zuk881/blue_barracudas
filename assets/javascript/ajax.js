@@ -412,7 +412,6 @@ $(document).ready(function () {
                 removeRef.remove()
                     // .then(function () {
                         location.reload();
-                        alert ("it's working");
                         // console.log("Remove succeeded.")
                     // })
                     // .catch(function (error) {
