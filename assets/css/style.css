@@ -75,6 +75,22 @@ img {
     overflow:;
 }
 
+.table-0 {
+    margin-top: 25px;
+    border-radius: 12px;
+    padding:10px 0px 10px 0px;
+    padding: 15px;
+    color: #8F8B81;
+    background-color: lightgray;
+}
+
+.table-0 .row {
+    margin-top: 25px;
+    border-radius: 12px;
+    padding:10px 20% 10px 20%;
+    color: #8F8B81;
+   
+}
 
 .table-1 {
     margin-top: 25px;
@@ -84,15 +100,6 @@ img {
     color: #8F8B81;
     background-color: lightgray;
 }
-
-.table-1 .row {
-    margin-top: 25px;
-    border-radius: 12px;
-    padding:10px 20% 10px 20%;
-    color: #8F8B81;
-   
-}
-
 
 .table-2 {
     margin-top: 25px;
@@ -230,6 +237,7 @@ nav {
 
 .container {
     background-color: #EFEEF1; 
+    clear: both;
 }
 
 footer {
@@ -256,24 +264,32 @@ footer {
     display: inline-block;
 }
 
+div.modal-content {
+    color: black
+}
 
+td {
+    white-space: -o-pre-wrap; 
+    word-wrap: break-word;
+    white-space: pre-wrap; 
+    white-space: -moz-pre-wrap; 
+    white-space: -pre-wrap; 
+}
 
-
+table { 
+    table-layout: fixed;
+    width: 100%
+  }
 
 /* Portrait and Landscape */
-@media only screen and (max-width: 600px) {
-    body {
-      
+@media only screen and (max-width: 720px) {
+    .container {
+        width: 100%;
+        margin: 20px 12px 20px 12px;
+        padding: 10px;
     }
   
-    
-    .stopText {
-        width: 70%;
-        display: block;
-       
-
-    }
-
+   
     h1 {
         font-family: 100%;
     }

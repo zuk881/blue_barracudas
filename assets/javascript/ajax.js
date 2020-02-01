@@ -4,6 +4,11 @@ $(document).ready(function () {
     // var modalArray = ["something is here"];
 
 
+    // hide tables unless if statement is met
+    $("#t1").hide();
+    $("#t2").hide();
+    $("#t3").hide();
+    $("#t4").hide();
     // function to display results after submit button is pressed
     $("#submit").on("click", function (e) {
         e.preventDefault();
@@ -69,22 +74,22 @@ $(document).ready(function () {
                 var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal" + key + "' class='modal-trigger'> see more </a>");
                 // $(".modal-trigger").on("click", function () {
 
-                    
-                    // console.log("modal trigger working");
-                    var divContainer = $("<div class='modal' id='modal" + key + "'>");
-                    var divContent = $("<div class='modal-content'>")
-                    var header = $("<h4>").text("Job Description");
-                    header.prependTo(divContent);
-                    var description = $("<p>").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
-                    description.appendTo(divContent);
-                    divContainer.append(divContent);
-                    divContainer.appendTo($(".dynamic-modal"));
 
-                    var modalFooter = $("<div class='modal-footer'>");
-                    var modalFooterAnchor = $("<a href='#!' class='modal-close waves-effect waves-green btn-flat'>Close</a>");
+                // console.log("modal trigger working");
+                var divContainer = $("<div class='modal' id='modal" + key + "'>");
+                var divContent = $("<div class='modal-content'>")
+                var header = $("<h4>").text("Job Description");
+                header.prependTo(divContent);
+                var description = $("<p>").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
+                description.appendTo(divContent);
+                divContainer.append(divContent);
+                divContainer.appendTo($(".dynamic-modal"));
 
-                    modalFooterAnchor.appendTo(modalFooter);
-                    modalFooter.appendTo(divContainer);
+                var modalFooter = $("<div class='modal-footer'>");
+                var modalFooterAnchor = $("<a href='#!' class='modal-close waves-effect waves-green btn-flat'>Close</a>");
+
+                modalFooterAnchor.appendTo(modalFooter);
+                modalFooter.appendTo(divContainer);
                 // })
 
                 // $('#exampleModalScrollable').modal('show') 
@@ -220,7 +225,9 @@ $(document).ready(function () {
             var resultsArr = response;
             console.log(resultsArr);
 
-
+            if (Array.length > 0) {
+                $("#t2").show();
+            }
 
             //GitHub Jobs Code
             // create a new div for each job result in the array with a unique id corresponding with the index of the item
@@ -232,7 +239,7 @@ $(document).ready(function () {
                 // here i make a var called save button and create an html button using jquery
                 var saveButton = $("<a>").addClass("btn-floating btn-large waves-effect waves-light blue save-button").html('<i class="material-icons">save</i></a></button>')
 
-               
+
 
 
 
@@ -242,7 +249,7 @@ $(document).ready(function () {
                 saveButton.attr("data-title", value.title)
                 saveButton.attr("data-company", value.company)
                 saveButton.attr("data-loc", value.location)
-                
+
 
                 //now I make another var newsavebutton which creates the data cell 
                 var newSaveButton = $("<td>")
@@ -252,7 +259,7 @@ $(document).ready(function () {
                 var newJobTitle = $("<td>").html("<a href='" + value.url + "' target='_blank'>" + value.title + "</a>");
                 var newEmployer = $("<td>").text(value.company);
                 var newJobLocation = $("<td>").text(value.location);
-                var newJobDescription = $("<td>").html(value.description.substring(0, 250) + "...<a href='#'data-toggle='modal' data-target='#exampleModalScrollable'> see more </a>");
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.description.substring(0, 250) + "...<a href='#'data-toggle='modal' data-target='#exampleModalScrollable'> see more </a>");
                 $(".modal-body").val(value.description);
                 $('#exampleModalScrollable .modal-body').append($("<span class='description-text' id='description-" + key + "'>").html(value.description));
                 $(".description-text").hide();
@@ -268,7 +275,7 @@ $(document).ready(function () {
                 // });
 
             })
-         //Empties the input boxes after the submit button is clicked
+            //Empties the input boxes after the submit button is clicked
             $("#keyword").val(" ")
             $("#location").val(" ")
 
@@ -373,8 +380,9 @@ $(document).ready(function () {
             eraseButton.attr("data-url", snapshot.val().url)
             eraseButton.attr("data-id", savedAutoId)
             eraseButton.attr("data-userid", snapshot.val().userid)
-            var appliedButton = $("<a target='_blank'>").addClass("btn-floating btn-large waves-effect waves-light green apply-button").html('<i class="material-icons">local_bar</i></a></button>')
+            var appliedButton = $("<a target='_blank'>").addClass("btn-floating btn-large waves-effect waves-light apply-button").html('<i class="material-icons">local_bar</i></a></button>')
             appliedButton.attr("href", snapshot.val().url)
+            // appliedButton.css("color", "#FFEFD5")
 
             var newRow = $("<tr>").append(
                 $("<td>").html(eraseButton),
