@@ -404,14 +404,14 @@ $(document).ready(function () {
 
             var userId = $(this).attr("data-userid")
             var removeTitle = $(this).attr("data-title")
-            var dataId = $(this).attr("data-id");
             console.log(userId)
             console.log(snapshot.val().userid)
 
-            if (snapshot.val().userid === userId && snapshot.val().autoId === dataId) {
+            if (snapshot.val().userid === userId && snapshot.val().title === removeTitle) {
                 removeRef.remove()
                     // .then(function () {
                         location.reload();
+                        // alert ("it's working");
                         // console.log("Remove succeeded.")
                     // })
                     // .catch(function (error) {
