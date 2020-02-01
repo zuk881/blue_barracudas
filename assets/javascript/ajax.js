@@ -25,6 +25,7 @@ $(document).ready(function () {
             }
             //code that runs after ajax call
         }).then(function (response) {
+            $(".job-info-1").empty();
             //display the USA Jobs table
             if (Array.length > 0) {
                 $("#t1").show();
@@ -61,38 +62,42 @@ $(document).ready(function () {
                 var newEmployer = $("<td>").text(value.MatchedObjectDescriptor.OrganizationName);
                 var newJobLocation = $("<td>").text(value.MatchedObjectDescriptor.PositionLocationDisplay);
                 // add anchor tag to initialize the modal to the job description
-                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#modal" + key + "' class='modal-trigger'> see more </a>");
-            
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary.substring(0, 250) + "...<a  href='#usamodal" + key + "' class='modal-trigger'> see more </a>");
+
                 // dynamically create modal
-                var divContainer = $("<div class='modal' id='modal" + key + "'>");
+                var divContainer = $("<div class='modal' id='usamodal" + key + "'>");
                 var divContent = $("<div class='modal-content'>")
                 var header = $("<h4>").text("Job Description");
                 header.prependTo(divContent);
+                //add job description to modal
                 var description = $("<p>").html(value.MatchedObjectDescriptor.UserArea.Details.JobSummary);
                 description.appendTo(divContent);
                 divContainer.append(divContent);
                 divContainer.appendTo($(".dynamic-modal"));
 
+                //add close button to modal
                 var modalFooter = $("<div class='modal-footer'>");
                 var modalFooterAnchor = $("<a href='#!' class='modal-close waves-effect waves-green btn-flat'>Close</a>");
 
+                //append close button to modal
                 modalFooterAnchor.appendTo(modalFooter);
                 modalFooter.appendTo(divContainer);
-                // })
 
                 // append table data to new row
                 newResult.append(newSaveButton).append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
+
                 // append new row to table body
                 $(".job-info-1").append(newResult);
 
             });
+            //required for the materialize modal to operate
             $(".modal").modal();
 
         })
 
-        $(".dynamic-modal-close-button").on("click", function () {
-            $(".dynamic-modal").hide();
-        })
+        // $(".dynamic-modal-close-button").on("click", function () {
+        //     $(".dynamic-modal").hide();
+        // })
 
 
         //writing ajax functionality for the github jobs api
@@ -101,7 +106,7 @@ $(document).ready(function () {
         var loc = $("#location").val()
         var queryURL = "https://jobs.github.com/positions.json?description=" + keyword + "&location=" + loc
         //the github jobs api returns html tags in the job description
-        //this function remvoes the tags
+        //this function removes html element
         function strip(html) {
             var doc = new DOMParser().parseFromString(html, 'text/html');
             return doc.body.textContent || "";
@@ -111,10 +116,9 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            // $("#t2").show();
+            $(".job-info-2").empty();
 
             var resultsArr = response;
-            console.log(resultsArr);
 
             if (Array.length > 0) {
                 $("#t2").show();
@@ -130,17 +134,11 @@ $(document).ready(function () {
                 // here i make a var called save button and create an html button using jquery
                 var saveButton = $("<a>").addClass("btn-floating btn-large waves-effect waves-light blue save-button").html('<i class="material-icons">save</i></a></button>')
 
-
-
-
-
-
                 //here I add the attributes for the values that I will need to push to the database in the click function
                 saveButton.attr("data-url", value.url)
                 saveButton.attr("data-title", value.title)
                 saveButton.attr("data-company", value.company)
                 saveButton.attr("data-loc", value.location)
-
 
                 //now I make another var newsavebutton which creates the data cell 
                 var newSaveButton = $("<td>")
@@ -150,10 +148,10 @@ $(document).ready(function () {
                 var newJobTitle = $("<td>").html("<a href='" + value.url + "' target='_blank'>" + value.title + "</a>");
                 var newEmployer = $("<td>").text(value.company);
                 var newJobLocation = $("<td>").text(value.location);
+                //add anchor tag to job description. also stripped html elements from job description
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(strip(value.description).substring(0, 250) + "...<a  href='#githubmodal" + key + "' class='modal-trigger'> see more </a>");
 
-                var newJobDescription = $("<td>").addClass("overflow-auto").html(strip(value.description).substring(0, 250) + "...<a  href='#modal" + key + "' class='modal-trigger'> see more </a>");
-
-                var divContainer = $("<div class='modal' id='modal" + key + "'>");
+                var divContainer = $("<div class='modal' id='githubmodal" + key + "'>");
                 var divContent = $("<div class='modal-content'>")
                 var header = $("<h4>").text("Job Description");
                 header.prependTo(divContent);
@@ -161,14 +159,13 @@ $(document).ready(function () {
                 description.appendTo(divContent);
                 divContainer.append(divContent);
                 divContainer.appendTo($(".dynamic-modal"));
-
+                //add close button to modal
                 var modalFooter = $("<div class='modal-footer'>");
                 var modalFooterAnchor = $("<a href='#!' class='modal-close waves-effect waves-green btn-flat'>Close</a>");
-
+                //append close button to modal
                 modalFooterAnchor.appendTo(modalFooter);
                 modalFooter.appendTo(divContainer);
 
-         
                 // append table data to new row
                 newResult.append(newSaveButton).append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
                 // append new row to the appropriate table body
@@ -180,7 +177,6 @@ $(document).ready(function () {
             $("#location").val(" ")
 
         });
-
 
     });
     //initialize the firebase database where we can save user saved jobs
@@ -204,19 +200,16 @@ $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            // console.log(user)
             userId = firebase.auth().currentUser.uid;
         } else {
             $(".favorites-table").hide();
+            // No user is signed in.
             signInMessage = $("<p>").addClass("center-align").text("Please sign in to use the saved jobs feature.");
             signInMessage.appendTo($(".favorites-header"));
             // DON'T DELETE THIS CONSOLE LOG
             console.log("invalid")
-            // No user is signed in.
         }
     });
-
-
 
     //logout function for auth user
     $("#logout").on("click", function () {
@@ -224,7 +217,6 @@ $(document).ready(function () {
         location.href = "auth.html"
 
     })
-
 
     //write the functionality of the save buttons
     //_______________________________________________
@@ -235,7 +227,6 @@ $(document).ready(function () {
     $(document).on("click", ".save-button", function (e) {
         //the object will be pushed to firebase on that signed in users path
         e.preventDefault();
-
 
         userId = firebase.auth().currentUser.uid;
         var autoId = rootRef.push().key
@@ -249,19 +240,13 @@ $(document).ready(function () {
             userid: userId,
             autoid: autoId
             // savebutton: $(this)
-        }).then(console.log(autoId))
-    })
+        });
+    });
     //the saved jobs will then be pulled from firebase to be displayed on the favorites html page
-    // var savedRef = database.ref('users')
     var savedAutoId;
     //use the child added function to take the values from the db
 
     rootRef.on("child_added", function (snapshot) {
-        // console.log(snapshot.val());
-        // console.log("in snapshot")
-        // console.log(snapshot.val().autoid)
-
-
 
         if (snapshot.val().userid === userId) {
             //and store them in new variables            
@@ -316,11 +301,6 @@ $(document).ready(function () {
         // .then(function () {
         //invokes the reload function for the table
         location.reload();
-
-        // })
-        // .catch(function (error) {
-        // console.log("Remove failed: " + error.message)
-        // });
 
     });
 
