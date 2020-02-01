@@ -141,7 +141,7 @@ footer {
     color: #fff;
     padding: 10px;
     clear: both;
-    border-top: 8px solid #4aaaa5;
+    border-top: 8px solid #8F8B81;
     color: #ccc;
     font-size: 12px;
     text-align: center;
@@ -174,15 +174,15 @@ label {
 }
 
 .favorite {
-    font-size: 60px;
-    color: red;
+    font-size: 48px;
+    color: #8F8B81;
     margin-top: 50px;
     margin-bottom: 50px;
 }  
 
 .applied {
-    font-size: 60px;
-    color: yellow;
+    font-size: 48px;
+    color: #8F8B81;
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -253,7 +253,7 @@ footer {
 }
 
 div.modal-content {
-    color: black
+    color: #8F8B81;
 }
 
 td {
