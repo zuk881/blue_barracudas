@@ -257,7 +257,7 @@ $(document).ready(function () {
                 var newJobTitle = $("<td>").html("<a href='" + value.url + "' target='_blank'>" + value.title + "</a>");
                 var newEmployer = $("<td>").text(value.company);
                 var newJobLocation = $("<td>").text(value.location);
-                var newJobDescription = $("<td>").html(value.description.substring(0, 250) + "...<a href='#'data-toggle='modal' data-target='#exampleModalScrollable'> see more </a>");
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.description.substring(0, 250) + "...<a href='#'data-toggle='modal' data-target='#exampleModalScrollable'> see more </a>");
                 $(".modal-body").val(value.description);
                 $('#exampleModalScrollable .modal-body').append($("<span class='description-text' id='description-" + key + "'>").html(value.description));
                 $(".description-text").hide();
