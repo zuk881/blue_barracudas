@@ -355,7 +355,7 @@ $(document).ready(function () {
     //the saved jobs will then be pulled from firebase to be displayed on the favorites html page
     //use the child added function to take the values from the db
     // var savedRef = database.ref('users')
-
+    var savedAutoId;
     rootRef.on("child_added", function (snapshot) {
         // console.log(snapshot.val());
         // console.log("in snapshot")
@@ -366,7 +366,7 @@ $(document).ready(function () {
         if (snapshot.val().userid === userId) {
             //and store them in new variables            
             var savedTitle = snapshot.val().title
-            var savedAutoId = snapshot.val().autoid
+            savedAutoId = snapshot.val().autoid
 
             var savedLoc = snapshot.val().location
             // console.log(savedLoc)
@@ -395,31 +395,32 @@ $(document).ready(function () {
             $(".job-info-saved").append(newRow);
             // console.log("appended");
         }
-        $(document).on("click", ".erase-button", function (e) {
-            newAutoId = $(this).attr("data-id")
-            // console.log(newAutoId)
-        
-            e.preventDefault()
+       
 
-            var userId = $(this).attr("data-userid")
-            var removeTitle = $(this).attr("data-title")
+    })
+
+
+    $(document).on("click", ".erase-button", function (e) {
+        newAutoId = $(this).attr("data-id")
+        // console.log(newAutoId)
     
-            if (snapshot.val().autoId === newAutoId) {
-                var removeRef = firebase.database().ref($(this).attr("data-id"))
-                console.log(userId)
-                console.log(snapshot.val().userid)
-                removeRef.remove()
-                    // .then(function () {
-                        location.reload();
-               
-                        // console.log("Remove succeeded.")
-                    // })
-                    // .catch(function (error) {
-                        // console.log("Remove failed: " + error.message)
-                    // });
-            }
+        e.preventDefault()
 
-        })
+        var userId = $(this).attr("data-userid")
+        var removeTitle = $(this).attr("data-title")
+        
+            var removeRef = firebase.database().ref($(this).attr("data-id"))
+            
+            removeRef.remove()
+                // .then(function () {
+                    location.reload();
+           
+                    // console.log("Remove succeeded.")
+                // })
+                // .catch(function (error) {
+                    // console.log("Remove failed: " + error.message)
+                // });
+        
 
     })
 })
