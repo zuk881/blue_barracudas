@@ -173,18 +173,6 @@ label {
     font-family: 'Roboto', sans-serif;
 }
 
-
-
-td {
-    overflow: auto;
-    text-overflow: ellipsis;
-    max-height: 1em;
-}
-
-td:hover {
-    overflow: visible;
-  }
-
 .favorite {
     font-size: 60px;
     color: red;
@@ -269,6 +257,7 @@ div.modal-content {
 }
 
 td {
+    vertical-align: text-top;
     white-space: -o-pre-wrap; 
     word-wrap: break-word;
     white-space: pre-wrap; 
@@ -282,13 +271,13 @@ table {
   }
 
 /* Portrait and Landscape */
-@media only screen and (max-width: 720px) {
+/* @media only screen and (max-width: 720px) {
     .container {
         width: 100%;
         margin: 20px 12px 20px 12px;
         padding: 10px;
     }
-  
+   */
    
     h1 {
         font-family: 100%;
