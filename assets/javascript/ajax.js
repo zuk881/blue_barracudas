@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // $("#t1").hide();
     // $("#t2").hide();
-    // var modalArray = ["something is here"];
+
 
 
     // hide tables unless if statement is met
@@ -13,7 +13,6 @@ $(document).ready(function () {
     $("#submit").on("click", function (e) {
         e.preventDefault();
         // $("job-info-1").empty();
-        // modalArray = [];
 
         // ajax call for USA Jobs
 
@@ -35,7 +34,9 @@ $(document).ready(function () {
             }
         }).then(function (response) {
            
-
+            if (Array.length > 0) {
+                $("#t1").show();
+            }
             // displays results from the USAJobs board to the page
             var results = response.SearchResult.SearchResultItems;
 
@@ -92,7 +93,6 @@ $(document).ready(function () {
                 modalFooter.appendTo(divContainer);
                 // })
 
-                // $('#exampleModalScrollable').modal('show') 
                 // append table data to new row
                 newResult.append(newSaveButton).append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
                 // append new row to table body
@@ -410,6 +410,7 @@ $(document).ready(function () {
             if (snapshot.val().userid === userId && snapshot.val().title === removeTitle) {
                 removeRef.remove()
                     .then(function () {
+                        location.reload();
                         // console.log("Remove succeeded.")
                     })
                     .catch(function (error) {
