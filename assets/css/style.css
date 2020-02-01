@@ -224,7 +224,7 @@ nav {
 }
 
 .container {
-    background-color: #EFEEF1; 
+    /* background-color: #EFEEF1;  */
     clear: both;
 }
 
@@ -257,6 +257,8 @@ div.modal-content {
 }
 
 td {
+    overflow: hidden;
+    max-width: 25ch;
     vertical-align: text-top;
     white-space: -o-pre-wrap; 
     word-wrap: break-word;
@@ -268,6 +270,12 @@ td {
 table { 
     table-layout: fixed;
     width: 100%
+  }
+
+  p {
+    
+    max-width: 25ch;
+    overflow: hidden;
   }
 
 /* Portrait and Landscape */
