@@ -409,13 +409,14 @@ $(document).ready(function () {
 
             if (snapshot.val().userid === userId && snapshot.val().title === removeTitle) {
                 removeRef.remove()
-                    .then(function () {
+                    // .then(function () {
                         location.reload();
+                        alert ("it's working");
                         // console.log("Remove succeeded.")
-                    })
-                    .catch(function (error) {
+                    // })
+                    // .catch(function (error) {
                         // console.log("Remove failed: " + error.message)
-                    });
+                    // });
             }
 
         })
