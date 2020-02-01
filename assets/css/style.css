@@ -257,7 +257,7 @@ div.modal-content {
 
 td {
     overflow: hidden;
-    max-width: 25ch;
+    /* max-width: 25ch; */
     vertical-align: text-top;
     white-space: -o-pre-wrap; 
     word-wrap: break-word;
@@ -272,8 +272,7 @@ table {
   }
 
   p {
-    
-    max-width: 25ch;
+    /* max-width: 25ch; */
     overflow: hidden;
   }
 
@@ -303,6 +302,10 @@ table {
             border-radius: 3px;
             padding: 1em;
             margin: 1em;
-       }
+        }
+
+        thead {
+            display: none;
+        }
     }
 

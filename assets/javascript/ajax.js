@@ -33,7 +33,7 @@ $(document).ready(function () {
                 "Authorization-Key": authKey
             }
         }).then(function (response) {
-           
+
             if (Array.length > 0) {
                 $("#t1").show();
             }
@@ -115,11 +115,12 @@ $(document).ready(function () {
         var keyword = $("#keyword").val()
         var loc = $("#location").val()
         var queryURL = "https://jobs.github.com/positions.json?description=" + keyword + "&location=" + loc
-        
-        function strip(html){
+        //the github jobs api returns html tags in the job description
+        //this function remvoes the tags
+        function strip(html) {
             var doc = new DOMParser().parseFromString(html, 'text/html');
             return doc.body.textContent || "";
-         }
+        }
 
         $.ajax({
             url: queryURL,
@@ -167,7 +168,7 @@ $(document).ready(function () {
 
                 var newJobDescription = $("<td>").addClass("overflow-auto").html(strip(value.description).substring(0, 250) + "...<a  href='#modal" + key + "' class='modal-trigger'> see more </a>");
 
-               var divContainer = $("<div class='modal' id='modal" + key + "'>");
+                var divContainer = $("<div class='modal' id='modal" + key + "'>");
                 var divContent = $("<div class='modal-content'>")
                 var header = $("<h4>").text("Job Description");
                 header.prependTo(divContent);
@@ -188,10 +189,10 @@ $(document).ready(function () {
                 // $('#exampleModalScrollable .modal-body').append($("<span class='description-text' id='description-" + key + "'>").html(strip(value.description)));
                 // $(".description-text").hide();
                 // $(document).on("click", ".see-more", function () {
-                    // console.log(value.description)
-                    // $(".description-text").hide();
-                    // $("#description-" + key + "").show().val();
-               
+                // console.log(value.description)
+                // $(".description-text").hide();
+                // $("#description-" + key + "").show().val();
+
 
                 console.log(newJobDescription);
                 // append table data to new row
@@ -221,10 +222,12 @@ $(document).ready(function () {
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+    //firebase references and global variables
     var database = firebase.database();
     var rootRef = database.ref();
     var userId;
     var autoId;
+    //firebase function to check if the user is authenticated
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
@@ -238,7 +241,7 @@ $(document).ready(function () {
 
 
 
-
+    //logout function for auth user
     $("#logout").on("click", function () {
         firebase.auth().signOut()
         location.href = "auth.html"
@@ -249,20 +252,13 @@ $(document).ready(function () {
     //write the functionality of the save buttons
     //_______________________________________________
     //document click function that will allow the user to click
-
     //on the dynamically generated save buttons from the api calls that display in the save
     //column of the table rows
     //when the user clicks the save button
     $(document).on("click", ".save-button", function (e) {
         //the object will be pushed to firebase on that signed in users path
         e.preventDefault();
-        // console.log("save")
-        // var savedJob = {
-        //     title: $(this).attr("data-title"),
-        //     location: $(this).attr("data-loc"),
-        //     company: $(this).attr("data-company"),
-        //     url: $(this).attr("data-url"),
-        // savebutton: $(this)
+
 
         userId = firebase.auth().currentUser.uid;
         var autoId = rootRef.push().key
@@ -279,9 +275,10 @@ $(document).ready(function () {
         }).then(console.log(autoId))
     })
     //the saved jobs will then be pulled from firebase to be displayed on the favorites html page
-    //use the child added function to take the values from the db
     // var savedRef = database.ref('users')
     var savedAutoId;
+    //use the child added function to take the values from the db
+
     rootRef.on("child_added", function (snapshot) {
         // console.log(snapshot.val());
         // console.log("in snapshot")
@@ -312,41 +309,42 @@ $(document).ready(function () {
 
             var newRow = $("<tr>").append(
                 $("<td>").text(savedTitle),
-                $("<td>").text(savedLoc),
                 $("<td>").text(savedCompany),
+                $("<td>").text(savedLoc),
                 $("<td>").html(appliedButton),
                 $("<td>").html(eraseButton)
-                // $("<td>").text(savedURL)
+
             )
             $(".job-info-saved").append(newRow);
             // console.log("appended");
         }
-       
-
     })
 
+    //on click function for the erase buttons
+    //removes the saved job from both the real time database
+    //as well as the saved jobs table
 
     $(document).on("click", ".erase-button", function (e) {
         newAutoId = $(this).attr("data-id")
         // console.log(newAutoId)
-    
+
         e.preventDefault()
 
         var userId = $(this).attr("data-userid")
         var removeTitle = $(this).attr("data-title")
-        
-            var removeRef = firebase.database().ref($(this).attr("data-id"))
-            
-            removeRef.remove()
-                // .then(function () {
-                    location.reload();
-           
-                    // console.log("Remove succeeded.")
-                // })
-                // .catch(function (error) {
-                    // console.log("Remove failed: " + error.message)
-                // });
-        
+
+        var removeRef = firebase.database().ref($(this).attr("data-id"))
+
+        removeRef.remove()
+        // .then(function () {
+        //invokes the reload function for the table
+        location.reload();
+
+        // })
+        // .catch(function (error) {
+        // console.log("Remove failed: " + error.message)
+        // });
+
     });
-  
+
 });
