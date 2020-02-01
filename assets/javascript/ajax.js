@@ -1,10 +1,11 @@
 $(document).ready(function () {
 
 
-    // var modalArray = ["something is here"];
-
-
-
+    // hide tables unless if statement is met
+     $("#t1").hide();
+     $("#t2").hide();
+     $("#t3").hide();
+     $("#t4").hide();
     // function to display results after submit button is pressed
     $("#submit").on("click", function (e) {
         e.preventDefault();
@@ -29,8 +30,12 @@ $(document).ready(function () {
                 "Authorization-Key": authKey
             }
         }).then(function (response) {
-
-
+        
+            // if statement to show tables if search produces results   
+            if(Array.length > 0) {
+                $("#t1").show();
+            }    
+        
             // displays results from the USAJobs board to the page
             var results = response.SearchResult.SearchResultItems;
 
@@ -218,7 +223,9 @@ $(document).ready(function () {
             var resultsArr = response;
             console.log(resultsArr);
 
-
+            if(Array.length > 0) {
+                $("#t2").show();
+            }    
 
             //GitHub Jobs Code
             // create a new div for each job result in the array with a unique id corresponding with the index of the item

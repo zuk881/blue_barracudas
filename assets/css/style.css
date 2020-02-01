@@ -256,24 +256,22 @@ footer {
     display: inline-block;
 }
 
+div.modal-content {
+    color: black
+}
 
 
 
 
 /* Portrait and Landscape */
-@media only screen and (max-width: 600px) {
-    body {
-      
+@media only screen and (max-width: 720px) {
+    .container {
+        width: 100vw;
+        margin: 20px 12px 20px 12px;
+        padding: 10px;
     }
   
-    
-    .stopText {
-        width: 70%;
-        display: block;
-       
-
-    }
-
+   
     h1 {
         font-family: 100%;
     }
