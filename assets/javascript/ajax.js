@@ -313,6 +313,7 @@ $(document).ready(function () {
                 $("<td>").text(savedLoc),
                 $("<td>").html(appliedButton),
                 $("<td>").html(eraseButton)
+
             )
             $(".job-info-saved").append(newRow);
             // console.log("appended");
