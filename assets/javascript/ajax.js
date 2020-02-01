@@ -216,7 +216,7 @@ $(document).ready(function () {
         firebase.auth().signOut()
         location.href = "auth.html"
 
-    })
+    });
 
     //write the functionality of the save buttons
     //_______________________________________________
