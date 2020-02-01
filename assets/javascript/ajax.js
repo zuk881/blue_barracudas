@@ -108,113 +108,16 @@ $(document).ready(function () {
         })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //writing ajax functionality for the github jobs api
 
         var keyword = $("#keyword").val()
         var loc = $("#location").val()
         var queryURL = "https://jobs.github.com/positions.json?description=" + keyword + "&location=" + loc
-
+        
+        function strip(html){
+            var doc = new DOMParser().parseFromString(html, 'text/html');
+            return doc.body.textContent || "";
+         }
 
         $.ajax({
             url: queryURL,
@@ -259,15 +162,36 @@ $(document).ready(function () {
                 var newJobTitle = $("<td>").html("<a href='" + value.url + "' target='_blank'>" + value.title + "</a>");
                 var newEmployer = $("<td>").text(value.company);
                 var newJobLocation = $("<td>").text(value.location);
-                var newJobDescription = $("<td>").addClass("overflow-auto").html(value.description.substring(0, 250) + "...<a href='#'data-toggle='modal' data-target='#exampleModalScrollable'> see more </a>");
-                $(".modal-body").val(value.description);
-                $('#exampleModalScrollable .modal-body').append($("<span class='description-text' id='description-" + key + "'>").html(value.description));
-                $(".description-text").hide();
-                $(document).on("click", ".see-more", function () {
+
+                var newJobDescription = $("<td>").addClass("overflow-auto").html(strip(value.description).substring(0, 250) + "...<a  href='#modal" + key + "' class='modal-trigger'> see more </a>");
+
+               var divContainer = $("<div class='modal' id='modal" + key + "'>");
+                var divContent = $("<div class='modal-content'>")
+                var header = $("<h4>").text("Job Description");
+                header.prependTo(divContent);
+                var description = $("<p>").html(strip(value.description));
+                description.appendTo(divContent);
+                divContainer.append(divContent);
+                divContainer.appendTo($(".dynamic-modal"));
+
+                var modalFooter = $("<div class='modal-footer'>");
+                var modalFooterAnchor = $("<a href='#!' class='modal-close waves-effect waves-green btn-flat'>Close</a>");
+
+                modalFooterAnchor.appendTo(modalFooter);
+                modalFooter.appendTo(divContainer);
+                // })
+
+
+                // $(".modal-body").val(strip(value.description));
+                // $('#exampleModalScrollable .modal-body').append($("<span class='description-text' id='description-" + key + "'>").html(strip(value.description)));
+                // $(".description-text").hide();
+                // $(document).on("click", ".see-more", function () {
                     // console.log(value.description)
                     // $(".description-text").hide();
-                    $("#description-" + key + "").show().val();
-                })
+                    // $("#description-" + key + "").show().val();
+               
+
+                console.log(newJobDescription);
                 // append table data to new row
                 newResult.append(newSaveButton).append(newJobTitle).append(newEmployer).append(newJobLocation).append(newJobDescription);
                 // append new row to the appropriate table body
@@ -421,6 +345,6 @@ $(document).ready(function () {
                     // console.log("Remove failed: " + error.message)
                 // });
         
-
-    })
-})
+    });
+  
+});
