@@ -70,8 +70,13 @@ body {
 }
 
 img {
-    max-width: 60%;
-    height: auto;
+    background-size:100% 100%;
+    max-width: 59%;
+    max-height: 50%;
+    overflow: hidden;
+    
+    align-content: center;
+    /* remove extra space below image */
 }
 
 .table-0 {
@@ -136,16 +141,15 @@ img {
 }
 
 footer {
-    background: #666666;
+    background: black;
     color: #fff;
     padding: 10px;
     clear: both;
     border-top: 8px solid #8F8B81;
-    color: #ccc;
+    color: white;
     font-size: 12px;
     text-align: center;
     width: 100%; 
-    position: fixed;
     bottom: 0px;
     height: 50px;   
 }  
@@ -229,6 +233,7 @@ nav {
 
 footer {
     z-index: 1000;
+    position: fixed;
 }
 
 .nav-wrapper a {
