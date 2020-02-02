@@ -281,6 +281,10 @@ table {
     overflow: hidden;
   }
 
+  .btn-floating {
+      background-color: #9E8FAC;
+  }
+
 /* Portrait and Landscape */
 /* @media only screen and (max-width: 720px) {
     .container {
