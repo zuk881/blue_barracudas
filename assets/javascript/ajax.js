@@ -204,7 +204,7 @@ $(document).ready(function () {
         } else {
             $(".favorites-table").hide();
             // No user is signed in.
-            signInMessage = $("<p>").addClass("center-align").text("Please sign in to use the saved jobs feature.");
+            signInMessage = $("<p>").addClass("center-align").text("Please login to use the saved jobs feature.");
             signInMessage.appendTo($(".favorites-header"));
             // DON'T DELETE THIS CONSOLE LOG
             console.log("invalid")
