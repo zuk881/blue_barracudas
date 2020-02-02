@@ -70,9 +70,13 @@ body {
 }
 
 img {
-    max-width: 60%;
-    height: auto;
-    overflow:;
+    background-size:100% 100%;
+    max-width: 59%;
+    max-height: 50%;
+    overflow: hidden;
+    
+    align-content: center;
+    /* remove extra space below image */
 }
 
 
@@ -130,16 +134,15 @@ img {
 }
 
 footer {
-    background: #666666;
+    background: black;
     color: #fff;
     padding: 10px;
     clear: both;
-    border-top: 8px solid #4aaaa5;
-    color: #ccc;
+    border-top: 8px solid #8F8B81;
+    color: white;
     font-size: 12px;
     text-align: center;
     width: 100%; 
-    position: fixed;
     bottom: 0px;
     height: 50px;   
 }  
@@ -180,6 +183,7 @@ td:hover {
 
 .favorite {
     font-size: 60px;
+    font-family: Roboto;
     color: red;
     margin-top: 50px;
     margin-bottom: 50px;
@@ -234,6 +238,7 @@ nav {
 
 footer {
     z-index: 1000;
+    position: fixed;
 }
 
 .nav-wrapper a {
