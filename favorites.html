@@ -16,43 +16,43 @@
 
 <body>
     <div class="navbar-fixed">
-    <nav>
-        <div class="nav-wrapper">
-          <a href="index.html" class="brand-logo center" >Home</a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="auth.html"'>Login</a></li>
-            <li><a href="favorites.html">Saved Searches</a></li>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="index.html" class="brand-logo center">Home</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="auth.html">Login</a></li>
+            <li><a href="index.html">New Search</a></li>
             <li id ='logout'><a>Logout</a></li>
-          </ul>
-        </div>
-      </nav>
+                </ul>
+            </div>
+        </nav>
     </div>
-    
-      <ul class="sidenav" id="mobile-demo">
+
+    <ul class="sidenav" id="mobile-demo">
         <li><a href="auth.html">Login</a></li>
-            <li><a href="favorites.html">Saved Searches</a></li>
-            <li id ='logout'><a>Logout</a></li>
-      </ul>
-    
-    
+        <li><a href="favorites.html">Saved Jobs</a></li>
+        <li id='logout'><a>Logout</a></li>
+    </ul>
 
-   
-    <h1 class="center-align favorite">Saved Job Searches</h1>
 
-    <div class="container table-1">
+
+    <div class="favorites-header">
+        <h1 class="center-align favorite">Saved Job Searches</h1>
+    </div>
+
+    <div class="container table-1 favorites-table">
         <table class="striped">
             <thead>
                 <tr>
                     <th id="h1" class="center-align">Job listings</th>
                 </tr>
                 <tr id="job-1">
-                    <th id="erase">Delete Listing</th>
-                    <th id="applied">Applied</th>
                     <th>Job Title</th>
                     <th>Employer</th>
                     <th>Location</th>
-                    <th class="stopText">Description</th>
+                    <th id="applied">Apply</th>
+                    <th id="erase">Delete Listing</th>
                 </tr>
             </thead>
             <tbody class="job-info-saved">
@@ -60,29 +60,11 @@
         </table>
     </div>
 
-    <h1 class="center-align applied">Applied For</h1>
-    <div class="container table-1">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th id="h1" class="center-align">Job listings</th>
-                </tr>
-                <tr id="job-1">
-                    <th id="erase">Delete Listing</th>
-                    <th>Job Title</th>
-                    <th>Employer</th>
-                    <th>Location</th>
-                    <th class="stopText">Description</th>
-                </tr>
-            </thead>
-            <tbody class="job-info-applied">
-            </tbody>
-        </table>
-    </div><br><br><br><br>
+    <br><br><br><br>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-        <!-- Compiled and minified JavaScript -->
+    <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>

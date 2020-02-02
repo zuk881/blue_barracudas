@@ -16,88 +16,63 @@
 </head>
 
 <body>
-    
+
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <a href="index.html" class="brand-logo center" >Home</a>
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-              <ul class="right hide-on-med-and-down">
-                <li><a href="auth.html">Login</a></li>
+                <a href="index.html" class="brand-logo center">Home</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="auth.html">Login</a></li>
                 <li><a href="favorites.html">Saved Searches</a></li>
                 <li id ='logout'><a>Logout</a></li>
-              </ul>
+                </ul>
             </div>
-          </nav>
-        </div>
-        
-          <ul class="sidenav" id="mobile-demo">
-            <li><a href="auth.html">Login</a></li>
-                <li><a href="favorites.html">Saved Searches</a></li>
-                <li id ='logout'><a>Logout</a></li>
-          </ul>
+        </nav>
+    </div>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="auth.html">Login</a></li>
+        <li><a href="favorites.html">Saved Jobs</a></li>
+        <li id='logout'><a>Logout</a></li>
+    </ul>
 
     <h1 class="center-align" id="lead">Let's Get Paid</h1>
 
-    
-    <div class="container table-1">
+
+    <div class="container table-0">
         <h4>Find Your Dream Job...</h4>
         <div class="row">
             <form class="col s12">
-              <div class="row">
-                <div class="input-field col s12 center">
-                    <input id="keyword" type="text" class="validate"">
-                    <label for="keyword">Job Title</label>
-                  </div>
+                <div class="row">
 
-                <div class="input-field col s12 center" placeholder="location">
-                  <input id="location" type="text" class="validate">
-                  <label for="location">Job Location</label>
+                    <div class="input-field col s12 center" placeholder="keyword">
+                        <input id="keyword" type="text" class="validate">
+                    <label for="keyword">Job Title</label>
+
+                    </div>
+
+                    <div class="input-field col s12 center" placeholder="location">
+                        <input id="location" type="text" class="validate">
+                        <label for="location">Job Location</label>
+                    </div>
                 </div>
-              </div>
-        
-        <!----<div class="row">
-            <form>
-            <div class="col s6">
-                <div class="form-group">
-                    <label for="keyword">Search Keyword</label>
-                    <input onfocus="this.value=''" type="text" class="form-control" placeholder="Keyword"
-                        id="keyword">
-                </div>
-                <div class="form-group">
-                    <label for="location">Locations</label>
-                    <input onfocus="this.value=''" type="text" name="location" class="form-control" id="Location"
-                        placeholder="location">
-                </div> ----->
+
                 <div class="form-group center">
-                    <button id="submit" class="btn waves-effect waves-light" style="background-color: #809D87" type="submit" name="action">Submit
+                    <button id="submit" class="btn waves-effect waves-light" style="background-color: #809D87"
+                        type="submit" name="action">Submit
                         <i class="material-icons right">send</i>
                     </button id="submit">
                 </div>
 
-            </div>
-            
-            <!---- <div class="col s6">
-                <nav>
-                    <div class="nav-wrapper">
-                       <a href="favorites.html" class="brand-logo center">Saved Jobs</a> 
-                    </div>
-                </nav>
-            </div>--->
+        </div>
 
-          <!----  <div class="col s6" >
-                <nav>
-                    <div class="nav-wrapper" id="googleButton">
-                        <a href="favorites.html" class="brand-logo center" id="googleLogin">Log in with google</a>
-                    </div>
-                </nav>
-            </div>--->
         </form>
-        </div> 
+    </div>
 
     </div>
 
-    <div class="container table-1">
+    <div class="container table-1" id="t1">
         <table class="striped">
             <thead>
                 <tr>
@@ -108,7 +83,7 @@
                     <th>Job Title</th>
                     <th>Employer</th>
                     <th>Location</th>
-                    <th class="stopText">Description</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody class="job-info-1">
@@ -117,7 +92,7 @@
         </table>
     </div>
 
-    <div class="container table-2">
+    <div class="container table-2" id="t2">
         <table class="striped">
             <thead>
                 <tr>
@@ -128,7 +103,7 @@
                     <th>Job Title</th>
                     <th>Employer</th>
                     <th>Location</th>
-                    <th class="stopText">Description</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody class="job-info-2">
@@ -137,7 +112,7 @@
         </table>
     </div>
 
-    <div class="container table-3">
+    <div class="container table-3" id="t3">
         <table class="striped">
             <thead>
                 <tr>
@@ -148,7 +123,7 @@
                     <th>Job Title</th>
                     <th>Employer</th>
                     <th>Location</th>
-                    <th class="stopText">Description</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody class="job-info-3">
@@ -157,7 +132,7 @@
         </table>
     </div>
 
-    <div class="container table-4">
+    <div class="container table-4" id="t4">
         <table class="striped">
             <thead>
                 <tr>
@@ -178,18 +153,15 @@
     </div>
 
     <!-- RACHEL TESTING MODAL  -->
-    <!-- Modal -->
 
     <!-- Modal Structure -->
-    <!-- <div class="dynamic-modal">
-        <div class="dynamic-modal-close">
-            <button class="dynamic-modal-close-button">X</button>
+    <div class="dynamic-modal">
 
-        </div>
-        <div class="dynamic-modal-content">
 
-        </div>
-    </div> -->
+        <!-- <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      </div> -->
+    </div>
 
 
 
@@ -220,8 +192,8 @@
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
     <script src="assets/javascript/app.js"></script>
     <script src="assets/javascript/ajax.js"></script>
-    
-            
+
+
 
 </body>
 
