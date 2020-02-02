@@ -265,7 +265,7 @@ $(document).ready(function () {
             eraseButton.attr("data-url", snapshot.val().url)
             eraseButton.attr("data-id", savedAutoId)
             eraseButton.attr("data-userid", snapshot.val().userid)
-            var appliedButton = $("<a target='_blank'>").addClass("btn-floating btn-large waves-effect waves-light apply-button").text('APPLY HERE')
+            var appliedButton = $("<a target='_blank'>").addClass("btn-floating btn-large waves-effect waves-light apply-button").text('APPLY')
             appliedButton.attr("href", snapshot.val().url)
             // appliedButton.css("color", "#FFEFD5")
 
